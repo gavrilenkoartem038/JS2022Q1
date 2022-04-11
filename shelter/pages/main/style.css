@@ -352,7 +352,7 @@
   letter-spacing: 0.06em;
 }
 .section-donation .donation-info .credit-card .card-logo {
-  background-image: url(/../../assets/svg/credit-card.svg);
+  background-image: url(../../assets/svg/credit-card.svg);
   width: 30px;
   height: 23px;
 }
