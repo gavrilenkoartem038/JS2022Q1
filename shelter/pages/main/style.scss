@@ -1,0 +1,321 @@
+@font-face {
+    font-family: 'Georgia';
+    font-style: normal;
+    font-weight: 400;
+    src: url("/assets/fonts/Georgia/Georgia.ttf");
+}
+
+@font-face {
+    font-family: 'Arial';
+    font-style: normal;
+    font-weight: 400;
+    src: url("/assets/fonts/Arial/Arial.TTF");
+}
+
+$color-primary: #F1CDB3;
+$color-primary-light: #FDDCC4;
+$color-dark-s: #CDCDCD;
+$color-dark-m: #B2B2B2;
+$color-dark-xl: #4C4C4C;
+$color-dark-3xl: #292929;
+$color-dark-l: #545454;
+$color-light-l: #F6F6F6;
+$color-light-s: #FAFAFA;
+$color-white: #FFFFFF;
+$section-padding : 80px 0 100px 0;
+$title-font: 35px/45px 'Georgia', serif;
+$font-georgia-small: 20px/23px 'Georgia', serif;
+$font-arial-small: 15px/24px 'Arial', sans-serif;
+
+@mixin flex($justify: center, $align: center, $dir: row) {
+    display: flex;
+    flex-direction: $dir;
+    justify-content: $justify;
+    align-items: $align;
+}
+
+%button {
+    max-width: max-content;
+    padding: 13px 43px;
+    font: 17px/1.3 'Georgia';
+    letter-spacing: 0.06em;
+    border: 2px solid $color-primary;
+    border-radius: 52px;
+    color: $color-dark-3xl;
+    &:hover {
+        background-color: $color-primary-light;
+        border-color: $color-primary-light;
+    }
+}
+
+.wrapper{
+    box-sizing: border-box;
+    width: 1280px;
+    margin: 0 auto;
+}
+
+.header-container {
+    @include flex(space-between);
+    padding: 60px 40px;
+    background-image: url(/assets/img/start-screen-background.png);
+    .header-info {
+        @include flex($dir:column);
+        align-items: center;
+        gap: 10px;
+    }
+    .header-title {
+        margin: 0;
+        font: 32px/35px 'Georgia';
+        letter-spacing: 0.06em;
+        color: $color-primary;
+    }
+    .header-text {
+        padding-left: 3px;
+        font: 13px/15px 'Arial';
+        letter-spacing: 0.1em;
+        color: $color-white;
+    }
+    .nav-list {
+        @include flex();
+        gap: 36px;
+        list-style-type: none;
+    }
+    .link {
+        font: $font-arial-small;
+        text-decoration: none;
+        color: $color-dark-s;
+    }
+}
+
+.start-screen {
+    @include flex(space-between);
+    padding: 0 40px;
+    background-image: url(/assets/img/start-screen-background.png);
+    background-position: bottom;
+}
+
+.start-info {
+    display: flex;
+    flex-direction: column;
+    align-self: center;
+    position: relative;
+    bottom: 40px;
+    gap: 42px; 
+    width: 460px;
+    color: #CDCDCD;
+}
+
+.start-title {
+    width: 310px;
+    font: 44px/1.3 'Georgia';
+    color: $color-white;
+}
+
+.start-text {
+    font: $font-arial-small;
+    color: $color-dark-s;
+}
+
+.main-button {
+    @extend %button;
+    background: $color-primary; 
+}
+
+.secondary-button {
+    @extend %button;
+    background: transparent;
+}
+
+.start-image {
+    display: flex;
+}
+
+.section {
+    @include flex();
+    gap: 120px;
+    padding: $section-padding;
+}
+
+.about-info {
+    @include flex($dir: column, $align:flex-start);
+    width: 430px;
+    gap: 25px;
+    .section-title {
+        width: 370px;
+    }
+}
+
+.about-text {
+    font: 15px/1.6 'Arial';
+    color: $color-dark-xl;
+}
+
+.section-title {
+    font: $title-font;
+    letter-spacing: 0.06em;
+    color: $color-dark-l;
+}
+
+.section-image {
+    display: flex;
+}
+
+.section-pets {
+    @include flex($dir: column);
+    gap: 60px;
+    background: $color-light-l;
+    .section-title {
+        width: 400px;
+        text-align: center;
+    }
+}
+
+.slider {
+    @include flex()
+}
+
+.card-container {
+    @include flex();
+    gap: 90px;
+}
+
+.card {
+    @include flex($dir: column);
+    gap: 30px;
+    padding-bottom: 30px;
+    background: $color-light-s;
+    &:hover {
+        background: $color-white;
+        .secondary-button{
+            background-color: $color-primary-light;
+            border-color: $color-primary-light;
+        };
+    }
+    span {
+        font: $font-georgia-small;
+        letter-spacing: 0.06em;
+    }
+}
+
+.section-help {
+    @include flex($dir: column);
+    gap: 60px;
+    .section-title {
+        width: 310px;
+        text-align: center;
+    }
+}
+
+.help-list {
+    @include flex();
+    gap: 55px 120px;
+    flex-wrap: wrap;
+    padding: 0 87px;
+}
+
+.list-item {
+    background-image: url(/assets/svg/icon-pet-food.svg);
+    background-size: 60px 60px;
+    background-repeat: no-repeat;
+    background-position: top center;
+    min-width: 60px;
+    text-align: center;
+    &:nth-child(2) {
+        background-image: url(/assets/svg/icon-transportation.svg);
+    }
+    &:nth-child(3) {
+        background-image: url(/assets/svg/icon-toys.svg);
+    }
+    &:nth-child(4) {
+        background-image: url(/assets/svg/icon-bowls-and-cups.svg);
+    }
+    &:nth-child(5) {
+        background-image: url(/assets/svg/icon-shampoos.svg);
+    }
+    &:nth-child(6) {
+        background-image: url(/assets/svg/icon-vitamins.svg);
+    }
+    &:nth-child(7) {
+        background-image: url(/assets/svg/icon-medicines.svg);
+    }
+    &:nth-child(8) {
+        background-image: url(/assets/svg/icon-collars-leashes.svg);
+    }
+    &:nth-child(9) {
+        background-image: url(/assets/svg/icon-sleeping-area.svg);
+    }
+    div {
+        padding-top: 90px;
+        font: $font-georgia-small;
+        letter-spacing: 0.06em;
+    }
+}
+
+.section-donation {
+    gap: 30px;
+    background-color: $color-light-l;
+    .donation-info {
+        @include flex(center, flex-start, column);
+        width: 380px;
+        gap: 20px;
+        .donation-contact {
+            font: 15px/16.5px 'Georgia', serif;
+            letter-spacing: 0.06em;
+            color: $color-dark-l;
+        }
+        .credit-card {
+            @include flex();
+            gap: 15px;
+            padding: 10px 15px;
+            background: $color-primary;
+            border-radius: 9px;
+            font: $font-georgia-small;
+            letter-spacing: 0.06em;
+            .card-logo{
+                background-image: url(/assets/svg/credit-card.svg);
+                width: 30px;
+                height: 23px;
+            }
+        }
+        .donation-text {
+            font: italic 12px/1.5 'Arial', sans-serif;
+            color: $color-dark-m;
+        }
+    }
+}
+
+.footer-container {
+    @include flex(space-between, flex-start);
+    gap: 160px;
+    padding: 40px 40px 0 40px;
+    background-image: url(/assets/img/footer-background.png);
+    .contacts-container {
+        @include flex(flex-start, flex-start, column);
+        gap: 40px;
+        padding-top: 16px;
+        .section-title {
+            color: $color-white;
+        }
+        .contact {
+            @include flex();
+            gap: 20px;
+            .contact-image {
+                background-image: url(/assets/svg/icon-email.svg);
+                height: 32px;
+                width: 40px;
+            }
+            .map-image {
+                background-image: url(/assets/svg/icon-marker.svg);
+                height: 32px;
+                width: 22px;
+            }
+            a {
+                text-decoration: none;
+                font: $font-georgia-small;
+                letter-spacing: 0.06em;
+                color: $color-primary;
+            }
+        }
+    }
+    
+}
