@@ -2,14 +2,14 @@
     font-family: 'Georgia';
     font-style: normal;
     font-weight: 400;
-    src: url("..//..//assets/fonts/Georgia/Georgia.ttf");
+    src: url("../../assets/fonts/Georgia/Georgia.ttf");
 }
 
 @font-face {
     font-family: 'Arial';
     font-style: normal;
     font-weight: 400;
-    src: url("..//..//assets/fonts/Arial/Arial.TTF");
+    src: url("../../assets/fonts/Arial/Arial.TTF");
 }
 
 $color-primary: #F1CDB3;
@@ -57,7 +57,7 @@ $font-arial-small: 15px/24px 'Arial', sans-serif;
 .header-container {
     @include flex(space-between);
     padding: 60px 40px;
-    background-image: url(..//..//assets/img/start-screen-background.png);
+    background-image: url(../../assets/img/start-screen-background.png);
     .header-info {
         @include flex($dir:column);
         align-items: center;
@@ -90,7 +90,7 @@ $font-arial-small: 15px/24px 'Arial', sans-serif;
 .start-screen {
     @include flex(space-between);
     padding: 0 40px;
-    background-image: url(..//..//assets/img/start-screen-background.png);
+    background-image: url(../../assets/img/start-screen-background.png);
     background-position: bottom;
 }
 
@@ -230,28 +230,28 @@ $font-arial-small: 15px/24px 'Arial', sans-serif;
     min-width: 60px;
     text-align: center;
     &:nth-child(2) {
-        background-image: url(..//..//assets/svg/icon-transportation.svg);
+        background-image: url(../../assets/svg/icon-transportation.svg);
     }
     &:nth-child(3) {
-        background-image: url(..//..//assets/svg/icon-toys.svg);
+        background-image: url(../../assets/svg/icon-toys.svg);
     }
     &:nth-child(4) {
-        background-image: url(..//..//assets/svg/icon-bowls-and-cups.svg);
+        background-image: url(../../assets/svg/icon-bowls-and-cups.svg);
     }
     &:nth-child(5) {
-        background-image: url(..//..//assets/svg/icon-shampoos.svg);
+        background-image: url(../../assets/svg/icon-shampoos.svg);
     }
     &:nth-child(6) {
-        background-image: url(..//..//assets/svg/icon-vitamins.svg);
+        background-image: url(../../assets/svg/icon-vitamins.svg);
     }
     &:nth-child(7) {
-        background-image: url(..//..//assets/svg/icon-medicines.svg);
+        background-image: url(../../assets/svg/icon-medicines.svg);
     }
     &:nth-child(8) {
-        background-image: url(..//..//assets/svg/icon-collars-leashes.svg);
+        background-image: url(../../assets/svg/icon-collars-leashes.svg);
     }
     &:nth-child(9) {
-        background-image: url(..//..//assets/svg/icon-sleeping-area.svg);
+        background-image: url(../../assets/svg/icon-sleeping-area.svg);
     }
     div {
         padding-top: 90px;
@@ -281,7 +281,7 @@ $font-arial-small: 15px/24px 'Arial', sans-serif;
             font: $font-georgia-small;
             letter-spacing: 0.06em;
             .card-logo{
-                background-image: url(/..//..//assets/svg/credit-card.svg);
+                background-image: url(/../../assets/svg/credit-card.svg);
                 width: 30px;
                 height: 23px;
             }
@@ -296,7 +296,7 @@ $font-arial-small: 15px/24px 'Arial', sans-serif;
 .footer-container {
     @include flex(space-between, flex-start);
     padding: 40px 40px 0 40px;
-    background-image: url(..//..//assets/img/footer-background.png);
+    background-image: url(../../assets/img/footer-background.png);
     .contacts-container {
         @include flex(space-between, flex-start, column);
         width: 279px;
@@ -312,15 +312,15 @@ $font-arial-small: 15px/24px 'Arial', sans-serif;
             @include flex();
             gap: 20px;
             .contact-image {
-                background-image: url(..//..//assets/svg/icon-email.svg);
+                background-image: url(../../assets/svg/icon-email.svg);
                 height: 32px;
                 width: 40px;
             }
             .im {
-                background-image: url(..//..//assets/svg/icon-phone.svg);
+                background-image: url(../../assets/svg/icon-phone.svg);
             }
             .map-image {
-                background-image: url(..//..//assets/svg/icon-marker.svg);
+                background-image: url(../../assets/svg/icon-marker.svg);
                 height: 32px;
                 width: 22px;
             }
