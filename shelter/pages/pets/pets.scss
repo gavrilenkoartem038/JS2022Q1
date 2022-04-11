@@ -54,19 +54,30 @@ $font-arial-small: 15px/24px 'Arial', sans-serif;
     scroll-behavior: smooth;
 }
 
+body {
+    display: flex;
+    min-height: 100vh;
+    background-color: $color-dark-s;
+}
+
 header {
     position: sticky;
     top: 0;
 }
 
+main {
+    margin-bottom: auto;
+}
+
 .wrapper{
+    @include flex(space-between, stretch, column);
     box-sizing: border-box;
     width: 1280px;
     margin: 0 auto;
 }
 
 .header-container {
-    @include flex(space-between);
+    @include flex(space-between, stretch);
     padding: 30px 40px;
     background-color: $color-white;
     a {
@@ -111,7 +122,7 @@ header {
             content: '';
             position: absolute;
             display: block;
-            bottom: 0;
+            bottom: -3px;
             left: 0;
             width: 0;
             height: 3px;
@@ -197,6 +208,7 @@ header {
         &.page {
             background-color: $color-primary;
             border-color: $color-primary;
+            pointer-events: none;
         }
         &.disabled {
             border-color: $color-dark-s;
