@@ -41,11 +41,18 @@ $font-arial-small: 15px/24px 'Arial', sans-serif;
     letter-spacing: 0.06em;
     border: 2px solid $color-primary;
     border-radius: 52px;
+    text-decoration: none;
     color: $color-dark-3xl;
+    cursor: pointer;
+    transition: 0.5s;
     &:hover {
         background-color: $color-primary-light;
         border-color: $color-primary-light;
     }
+}
+
+* {
+    scroll-behavior: smooth;
 }
 
 .wrapper{
@@ -58,7 +65,7 @@ $font-arial-small: 15px/24px 'Arial', sans-serif;
     @include flex(space-between);
     padding: 60px 40px;
     background-image: url(../../assets/img/start-screen-background.png);
-    .header-info {
+    a {
         @include flex($dir:column);
         align-items: center;
         gap: 10px;
@@ -186,6 +193,18 @@ $font-arial-small: 15px/24px 'Arial', sans-serif;
     background-color: transparent;
     border: 2px solid $color-primary;
     border-radius: 52px;
+    background-image: url(../../assets/svg/Arrow.svg);
+    background-position: center;
+    background-repeat: no-repeat;
+    cursor: pointer;
+    transition: 0.5s;
+    &:last-child {
+        transform: rotate(180deg);
+    }
+    &:hover {
+        background-color: $color-primary-light;
+        border-color: $color-primary-light;
+    }
 }
 
 .card {
@@ -193,6 +212,9 @@ $font-arial-small: 15px/24px 'Arial', sans-serif;
     gap: 30px;
     padding-bottom: 30px;
     background: $color-light-s;
+    transition: 0.5s;
+    border-radius: 9px;
+    cursor: pointer;
     &:hover {
         background: $color-white;
         .secondary-button{
@@ -203,6 +225,7 @@ $font-arial-small: 15px/24px 'Arial', sans-serif;
     span {
         font: $font-georgia-small;
         letter-spacing: 0.06em;
+        color: $color-dark-l;
     }
 }
 
@@ -223,7 +246,7 @@ $font-arial-small: 15px/24px 'Arial', sans-serif;
 }
 
 .list-item {
-    background-image: url(ets/svg/icon-pet-food.svg);
+    background-image: url(../../assets/svg/icon-pet-food.svg);
     background-size: 60px 60px;
     background-repeat: no-repeat;
     background-position: top center;
@@ -257,6 +280,7 @@ $font-arial-small: 15px/24px 'Arial', sans-serif;
         padding-top: 90px;
         font: $font-georgia-small;
         letter-spacing: 0.06em;
+        color: $color-dark-l;
     }
 }
 
@@ -284,6 +308,10 @@ $font-arial-small: 15px/24px 'Arial', sans-serif;
                 background-image: url(/../../assets/svg/credit-card.svg);
                 width: 30px;
                 height: 23px;
+            }
+            a {
+                text-decoration: none;
+                color: $color-dark-l;
             }
         }
         .donation-text {

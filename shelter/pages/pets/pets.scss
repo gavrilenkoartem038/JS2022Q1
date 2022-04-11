@@ -1,0 +1,222 @@
+@font-face {
+    font-family: 'Georgia';
+    font-style: normal;
+    font-weight: 400;
+    src: url("../../assets/fonts/Georgia/Georgia.ttf");
+}
+
+@font-face {
+    font-family: 'Arial';
+    font-style: normal;
+    font-weight: 400;
+    src: url("../../assets/fonts/Arial/Arial.TTF");
+}
+
+$color-primary: #F1CDB3;
+$color-primary-light: #FDDCC4;
+$color-dark-s: #CDCDCD;
+$color-dark-m: #B2B2B2;
+$color-dark-xl: #4C4C4C;
+$color-dark-3xl: #292929;
+$color-dark-l: #545454;
+$color-light-l: #F6F6F6;
+$color-light-s: #FAFAFA;
+$color-white: #FFFFFF;
+$section-padding : 80px 0 100px 0;
+$title-font: 35px/45px 'Georgia', serif;
+$font-georgia-small: 20px/23px 'Georgia', serif;
+$font-arial-small: 15px/24px 'Arial', sans-serif;
+
+@mixin flex($justify: center, $align: center, $dir: row) {
+    display: flex;
+    flex-direction: $dir;
+    justify-content: $justify;
+    align-items: $align;
+}
+
+%button {
+    max-width: max-content;
+    padding: 13px 43px;
+    font: 17px/1.3 'Georgia';
+    letter-spacing: 0.06em;
+    border: 2px solid $color-primary;
+    border-radius: 52px;
+    color: $color-dark-3xl;
+    cursor: pointer;
+    transition: 0.5s;
+    &:hover {
+        background-color: $color-primary-light;
+        border-color: $color-primary-light;
+    }
+}
+
+* {
+    scroll-behavior: smooth;
+}
+
+header {
+    position: sticky;
+    top: 0;
+}
+
+.wrapper{
+    box-sizing: border-box;
+    width: 1280px;
+    margin: 0 auto;
+}
+
+.header-container {
+    @include flex(space-between);
+    padding: 30px 40px;
+    background-color: $color-white;
+    a {
+        @include flex($dir:column);
+        align-items: center;
+        gap: 10px;
+    }
+    .header-title {
+        margin: 0;
+        font: 32px/35px 'Georgia';
+        letter-spacing: 0.06em;
+        color: $color-dark-l;
+    }
+    .header-text {
+        padding-left: 3px;
+        font: 13px/15px 'Arial';
+        letter-spacing: 0.1em;
+        color: $color-dark-3xl;
+    }
+    .nav-list {
+        @include flex();
+        gap: 36px;
+        list-style-type: none;
+    }
+    .link {
+        font: $font-arial-small;
+        text-decoration: none;
+        color: $color-dark-l;
+    }
+}
+
+.section-title {
+    font: $title-font;
+    letter-spacing: 0.06em;
+    color: $color-dark-l;
+}
+
+.section-pets {
+    @include flex($dir: column);
+    gap: 60px;
+    background: $color-light-l;
+    padding: 80px 40px 100px 40px;
+    .section-title {
+        width: 400px;
+        text-align: center;
+    }
+}
+
+.card-container {
+    @include flex(space-between);
+    row-gap: 30px;
+    flex-wrap: wrap;
+}
+
+.card {
+    @include flex($dir: column);
+    gap: 30px;
+    padding-bottom: 30px;
+    background: $color-light-s;
+    transition: 0.5s;
+    border-radius: 9px;
+    cursor: pointer;
+    &:hover {
+        background: $color-white;
+        .secondary-button{
+            background-color: $color-primary-light;
+            border-color: $color-primary-light;
+        };
+    }
+    span {
+        font: $font-georgia-small;
+        letter-spacing: 0.06em;
+        color: $color-dark-l;
+    }
+}
+
+.secondary-button {
+    @extend %button;
+    background: transparent;
+}
+
+.arrow-container {
+    @include flex();
+    gap: 20px;
+    .arrow-button {
+        width: 52px;
+        height: 52px;
+        background-color: transparent;
+        border: 2px solid $color-primary;
+        border-radius: 52px;
+        font: $font-georgia-small;
+        color: $color-dark-3xl;
+        cursor: pointer;
+        transition: 0.5s;
+        &:hover {
+            background-color: $color-primary-light;
+            border-color: $color-primary-light;
+        }
+        &.page {
+            background-color: $color-primary;
+            border-color: $color-primary;
+        }
+        &.disabled {
+            border-color: $color-dark-s;
+            color: $color-dark-s;
+            pointer-events: none;
+        }
+    }
+}
+
+.footer-container {
+    @include flex(space-between, flex-start);
+    padding: 40px 40px 0 40px;
+    background-image: url(../../assets/img/footer-background.png);
+    .contacts-container {
+        @include flex(space-between, flex-start, column);
+        width: 279px;
+        height: 234px;
+        padding-top: 16px;
+        &:nth-child(2) {
+            width: 302px;
+        }
+        .section-title {
+            color: $color-white;
+        }
+        .contact {
+            @include flex();
+            gap: 20px;
+            .contact-image {
+                background-image: url(../../assets/svg/icon-email.svg);
+                height: 32px;
+                width: 40px;
+            }
+            .im {
+                background-image: url(../../assets/svg/icon-phone.svg);
+            }
+            .map-image {
+                background-image: url(../../assets/svg/icon-marker.svg);
+                height: 32px;
+                width: 22px;
+            }
+            a {
+                text-decoration: none;
+                font: $font-georgia-small;
+                letter-spacing: 0.06em;
+                color: $color-primary;
+            }
+        }
+    }
+    .footer-logo {
+        display: flex;
+    }    
+}
