@@ -30,12 +30,26 @@
   scroll-behavior: smooth;
 }
 
+body {
+  display: flex;
+  min-height: 100vh;
+  background-color: #CDCDCD;
+}
+
 header {
   position: sticky;
   top: 0;
 }
 
+main {
+  margin-bottom: auto;
+}
+
 .wrapper {
+  display: flex;
+  flex-direction: column;
+  justify-content: space-between;
+  align-items: stretch;
   box-sizing: border-box;
   width: 1280px;
   margin: 0 auto;
@@ -45,7 +59,7 @@ header {
   display: flex;
   flex-direction: row;
   justify-content: space-between;
-  align-items: center;
+  align-items: stretch;
   padding: 30px 40px;
   background-color: #FFFFFF;
 }
@@ -96,7 +110,7 @@ header {
   content: "";
   position: absolute;
   display: block;
-  bottom: 0;
+  bottom: -3px;
   left: 0;
   width: 0;
   height: 3px;
@@ -193,6 +207,7 @@ header {
 .arrow-container .arrow-button.page {
   background-color: #F1CDB3;
   border-color: #F1CDB3;
+  pointer-events: none;
 }
 .arrow-container .arrow-button.disabled {
   border-color: #CDCDCD;

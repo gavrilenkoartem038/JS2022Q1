@@ -55,6 +55,10 @@ $font-arial-small: 15px/24px 'Arial', sans-serif;
     scroll-behavior: smooth;
 }
 
+body {
+    background-color: $color-dark-s;
+}
+
 .wrapper{
     box-sizing: border-box;
     width: 1280px;
@@ -62,7 +66,7 @@ $font-arial-small: 15px/24px 'Arial', sans-serif;
 }
 
 .header-container {
-    @include flex(space-between);
+    @include flex(space-between, stretch);
     padding: 60px 40px;
     background-image: url(../../assets/img/start-screen-background.png);
     a {
@@ -108,7 +112,7 @@ $font-arial-small: 15px/24px 'Arial', sans-serif;
             content: '';
             position: absolute;
             display: block;
-            bottom: 0;
+            bottom: -3px;
             left: 0;
             width: 0;
             height: 3px;
@@ -168,6 +172,7 @@ $font-arial-small: 15px/24px 'Arial', sans-serif;
 }
 
 .section {
+    background-color: $color-white;
     @include flex();
     gap: 120px;
     padding: $section-padding;
