@@ -91,10 +91,39 @@ header {
         gap: 36px;
         list-style-type: none;
     }
+
+    .nav-element {
+        position: relative;
+    }
+
     .link {
         font: $font-arial-small;
         text-decoration: none;
         color: $color-dark-l;
+        transition: 0.5s;
+        &.active-link{
+            color: $color-dark-3xl;
+            &::after {
+                width: 100%;
+            }
+        }
+        &::after {
+            content: '';
+            position: absolute;
+            display: block;
+            bottom: 0;
+            left: 0;
+            width: 0;
+            height: 3px;
+            background-color: $color-primary;
+            transition: 0.5s;
+        }
+        &:hover {
+            color: $color-dark-3xl;
+            &::after {
+                width: 100%;
+            }
+        }
     }
 }
 

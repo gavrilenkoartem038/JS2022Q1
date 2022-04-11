@@ -77,10 +77,37 @@ header {
   gap: 36px;
   list-style-type: none;
 }
+.header-container .nav-element {
+  position: relative;
+}
 .header-container .link {
   font: 15px/24px "Arial", sans-serif;
   text-decoration: none;
   color: #545454;
+  transition: 0.5s;
+}
+.header-container .link.active-link {
+  color: #292929;
+}
+.header-container .link.active-link::after {
+  width: 100%;
+}
+.header-container .link::after {
+  content: "";
+  position: absolute;
+  display: block;
+  bottom: 0;
+  left: 0;
+  width: 0;
+  height: 3px;
+  background-color: #F1CDB3;
+  transition: 0.5s;
+}
+.header-container .link:hover {
+  color: #292929;
+}
+.header-container .link:hover::after {
+  width: 100%;
 }
 
 .section-title {

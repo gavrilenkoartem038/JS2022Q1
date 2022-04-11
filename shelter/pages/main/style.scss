@@ -86,11 +86,41 @@ $font-arial-small: 15px/24px 'Arial', sans-serif;
         @include flex();
         gap: 36px;
         list-style-type: none;
+        padding-left: 0;
     }
+
+    .nav-element {
+        position: relative;
+    }
+
     .link {
         font: $font-arial-small;
         text-decoration: none;
         color: $color-dark-s;
+        transition: 0.5s;
+        &.active-link{
+            color: $color-light-s;
+            &::after {
+                width: 100%;
+            }
+        }
+        &::after {
+            content: '';
+            position: absolute;
+            display: block;
+            bottom: 0;
+            left: 0;
+            width: 0;
+            height: 3px;
+            background-color: $color-primary;
+            transition: 0.5s;
+        }
+        &:hover {
+            color: $color-light-s;
+            &::after {
+                width: 100%;
+            }
+        }
     }
 }
 
