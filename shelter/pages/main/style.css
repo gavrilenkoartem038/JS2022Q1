@@ -17,11 +17,18 @@
   letter-spacing: 0.06em;
   border: 2px solid #F1CDB3;
   border-radius: 52px;
+  text-decoration: none;
   color: #292929;
+  cursor: pointer;
+  transition: 0.5s;
 }
 .secondary-button:hover, .main-button:hover {
   background-color: #FDDCC4;
   border-color: #FDDCC4;
+}
+
+* {
+  scroll-behavior: smooth;
 }
 
 .wrapper {
@@ -38,7 +45,7 @@
   padding: 60px 40px;
   background-image: url(../../assets/img/start-screen-background.png);
 }
-.header-container .header-info {
+.header-container a {
   display: flex;
   flex-direction: column;
   justify-content: center;
@@ -65,11 +72,39 @@
   align-items: center;
   gap: 36px;
   list-style-type: none;
+  padding-left: 0;
+}
+.header-container .nav-element {
+  position: relative;
 }
 .header-container .link {
   font: 15px/24px "Arial", sans-serif;
   text-decoration: none;
   color: #CDCDCD;
+  transition: 0.5s;
+}
+.header-container .link.active-link {
+  color: #FAFAFA;
+}
+.header-container .link.active-link::after {
+  width: 100%;
+}
+.header-container .link::after {
+  content: "";
+  position: absolute;
+  display: block;
+  bottom: 0;
+  left: 0;
+  width: 0;
+  height: 3px;
+  background-color: #F1CDB3;
+  transition: 0.5s;
+}
+.header-container .link:hover {
+  color: #FAFAFA;
+}
+.header-container .link:hover::after {
+  width: 100%;
 }
 
 .start-screen {
@@ -187,6 +222,18 @@
   background-color: transparent;
   border: 2px solid #F1CDB3;
   border-radius: 52px;
+  background-image: url(../../assets/svg/Arrow.svg);
+  background-position: center;
+  background-repeat: no-repeat;
+  cursor: pointer;
+  transition: 0.5s;
+}
+.arrow-button:last-child {
+  transform: rotate(180deg);
+}
+.arrow-button:hover {
+  background-color: #FDDCC4;
+  border-color: #FDDCC4;
 }
 
 .card {
@@ -197,6 +244,9 @@
   gap: 30px;
   padding-bottom: 30px;
   background: #FAFAFA;
+  transition: 0.5s;
+  border-radius: 9px;
+  cursor: pointer;
 }
 .card:hover {
   background: #FFFFFF;
@@ -208,6 +258,7 @@
 .card span {
   font: 20px/23px "Georgia", serif;
   letter-spacing: 0.06em;
+  color: #545454;
 }
 
 .section-help {
@@ -233,7 +284,7 @@
 }
 
 .list-item {
-  background-image: url(ets/svg/icon-pet-food.svg);
+  background-image: url(../../assets/svg/icon-pet-food.svg);
   background-size: 60px 60px;
   background-repeat: no-repeat;
   background-position: top center;
@@ -268,6 +319,7 @@
   padding-top: 90px;
   font: 20px/23px "Georgia", serif;
   letter-spacing: 0.06em;
+  color: #545454;
 }
 
 .section-donation {
@@ -303,6 +355,10 @@
   background-image: url(/../../assets/svg/credit-card.svg);
   width: 30px;
   height: 23px;
+}
+.section-donation .donation-info .credit-card a {
+  text-decoration: none;
+  color: #545454;
 }
 .section-donation .donation-info .donation-text {
   font: italic 12px/1.5 "Arial", sans-serif;

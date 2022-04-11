@@ -41,7 +41,6 @@ $font-arial-small: 15px/24px 'Arial', sans-serif;
     letter-spacing: 0.06em;
     border: 2px solid $color-primary;
     border-radius: 52px;
-    text-decoration: none;
     color: $color-dark-3xl;
     cursor: pointer;
     transition: 0.5s;
@@ -55,6 +54,11 @@ $font-arial-small: 15px/24px 'Arial', sans-serif;
     scroll-behavior: smooth;
 }
 
+header {
+    position: sticky;
+    top: 0;
+}
+
 .wrapper{
     box-sizing: border-box;
     width: 1280px;
@@ -63,8 +67,8 @@ $font-arial-small: 15px/24px 'Arial', sans-serif;
 
 .header-container {
     @include flex(space-between);
-    padding: 60px 40px;
-    background-image: url(../../assets/img/start-screen-background.png);
+    padding: 30px 40px;
+    background-color: $color-white;
     a {
         @include flex($dir:column);
         align-items: center;
@@ -74,19 +78,18 @@ $font-arial-small: 15px/24px 'Arial', sans-serif;
         margin: 0;
         font: 32px/35px 'Georgia';
         letter-spacing: 0.06em;
-        color: $color-primary;
+        color: $color-dark-l;
     }
     .header-text {
         padding-left: 3px;
         font: 13px/15px 'Arial';
         letter-spacing: 0.1em;
-        color: $color-white;
+        color: $color-dark-3xl;
     }
     .nav-list {
         @include flex();
         gap: 36px;
         list-style-type: none;
-        padding-left: 0;
     }
 
     .nav-element {
@@ -96,10 +99,10 @@ $font-arial-small: 15px/24px 'Arial', sans-serif;
     .link {
         font: $font-arial-small;
         text-decoration: none;
-        color: $color-dark-s;
+        color: $color-dark-l;
         transition: 0.5s;
         &.active-link{
-            color: $color-light-s;
+            color: $color-dark-3xl;
             &::after {
                 width: 100%;
             }
@@ -116,75 +119,12 @@ $font-arial-small: 15px/24px 'Arial', sans-serif;
             transition: 0.5s;
         }
         &:hover {
-            color: $color-light-s;
+            color: $color-dark-3xl;
             &::after {
                 width: 100%;
             }
         }
     }
-}
-
-.start-screen {
-    @include flex(space-between);
-    padding: 0 40px;
-    background-image: url(../../assets/img/start-screen-background.png);
-    background-position: bottom;
-}
-
-.start-info {
-    display: flex;
-    flex-direction: column;
-    align-self: center;
-    position: relative;
-    bottom: 40px;
-    gap: 42px; 
-    width: 460px;
-    color: #CDCDCD;
-}
-
-.start-title {
-    width: 310px;
-    font: 44px/1.3 'Georgia';
-    color: $color-white;
-}
-
-.start-text {
-    font: $font-arial-small;
-    color: $color-dark-s;
-}
-
-.main-button {
-    @extend %button;
-    background: $color-primary; 
-}
-
-.secondary-button {
-    @extend %button;
-    background: transparent;
-}
-
-.start-image {
-    display: flex;
-}
-
-.section {
-    @include flex();
-    gap: 120px;
-    padding: $section-padding;
-}
-
-.about-info {
-    @include flex($dir: column, $align:flex-start);
-    width: 430px;
-    gap: 25px;
-    .section-title {
-        width: 370px;
-    }
-}
-
-.about-text {
-    font: 15px/1.6 'Arial';
-    color: $color-dark-xl;
 }
 
 .section-title {
@@ -193,48 +133,21 @@ $font-arial-small: 15px/24px 'Arial', sans-serif;
     color: $color-dark-l;
 }
 
-.section-image {
-    display: flex;
-}
-
 .section-pets {
     @include flex($dir: column);
     gap: 60px;
     background: $color-light-l;
+    padding: 80px 40px 100px 40px;
     .section-title {
         width: 400px;
         text-align: center;
     }
 }
 
-.slider {
-    @include flex();
-    column-gap: 53px;
-}
-
 .card-container {
-    @include flex();
-    gap: 90px;
-}
-
-.arrow-button {
-    width: 52px;
-    height: 52px;
-    background-color: transparent;
-    border: 2px solid $color-primary;
-    border-radius: 52px;
-    background-image: url(../../assets/svg/Arrow.svg);
-    background-position: center;
-    background-repeat: no-repeat;
-    cursor: pointer;
-    transition: 0.5s;
-    &:last-child {
-        transform: rotate(180deg);
-    }
-    &:hover {
-        background-color: $color-primary-light;
-        border-color: $color-primary-light;
-    }
+    @include flex(space-between);
+    row-gap: 30px;
+    flex-wrap: wrap;
 }
 
 .card {
@@ -259,94 +172,36 @@ $font-arial-small: 15px/24px 'Arial', sans-serif;
     }
 }
 
-.section-help {
-    @include flex($dir: column);
-    gap: 60px;
-    .section-title {
-        width: 310px;
-        text-align: center;
-    }
+.secondary-button {
+    @extend %button;
+    background: transparent;
 }
 
-.help-list {
+.arrow-container {
     @include flex();
-    gap: 55px 120px;
-    flex-wrap: wrap;
-    padding: 0 87px;
-}
-
-.list-item {
-    background-image: url(../../assets/svg/icon-pet-food.svg);
-    background-size: 60px 60px;
-    background-repeat: no-repeat;
-    background-position: top center;
-    min-width: 60px;
-    text-align: center;
-    &:nth-child(2) {
-        background-image: url(../../assets/svg/icon-transportation.svg);
-    }
-    &:nth-child(3) {
-        background-image: url(../../assets/svg/icon-toys.svg);
-    }
-    &:nth-child(4) {
-        background-image: url(../../assets/svg/icon-bowls-and-cups.svg);
-    }
-    &:nth-child(5) {
-        background-image: url(../../assets/svg/icon-shampoos.svg);
-    }
-    &:nth-child(6) {
-        background-image: url(../../assets/svg/icon-vitamins.svg);
-    }
-    &:nth-child(7) {
-        background-image: url(../../assets/svg/icon-medicines.svg);
-    }
-    &:nth-child(8) {
-        background-image: url(../../assets/svg/icon-collars-leashes.svg);
-    }
-    &:nth-child(9) {
-        background-image: url(../../assets/svg/icon-sleeping-area.svg);
-    }
-    div {
-        padding-top: 90px;
+    gap: 20px;
+    .arrow-button {
+        width: 52px;
+        height: 52px;
+        background-color: transparent;
+        border: 2px solid $color-primary;
+        border-radius: 52px;
         font: $font-georgia-small;
-        letter-spacing: 0.06em;
-        color: $color-dark-l;
-    }
-}
-
-.section-donation {
-    gap: 30px;
-    background-color: $color-light-l;
-    .donation-info {
-        @include flex(center, flex-start, column);
-        width: 380px;
-        gap: 20px;
-        .donation-contact {
-            font: 15px/16.5px 'Georgia', serif;
-            letter-spacing: 0.06em;
-            color: $color-dark-l;
+        color: $color-dark-3xl;
+        cursor: pointer;
+        transition: 0.5s;
+        &:hover {
+            background-color: $color-primary-light;
+            border-color: $color-primary-light;
         }
-        .credit-card {
-            @include flex();
-            gap: 15px;
-            padding: 10px 15px;
-            background: $color-primary;
-            border-radius: 9px;
-            font: $font-georgia-small;
-            letter-spacing: 0.06em;
-            .card-logo{
-                background-image: url(/../../assets/svg/credit-card.svg);
-                width: 30px;
-                height: 23px;
-            }
-            a {
-                text-decoration: none;
-                color: $color-dark-l;
-            }
+        &.page {
+            background-color: $color-primary;
+            border-color: $color-primary;
         }
-        .donation-text {
-            font: italic 12px/1.5 'Arial', sans-serif;
-            color: $color-dark-m;
+        &.disabled {
+            border-color: $color-dark-s;
+            color: $color-dark-s;
+            pointer-events: none;
         }
     }
 }
@@ -392,7 +247,5 @@ $font-arial-small: 15px/24px 'Arial', sans-serif;
     }
     .footer-logo {
         display: flex;
-    }
-    
-    
+    }    
 }
