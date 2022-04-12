@@ -355,6 +355,10 @@ body {
   border-radius: 9px;
   font: 20px/23px "Georgia", serif;
   letter-spacing: 0.06em;
+  transition: 0.5s;
+}
+.section-donation .donation-info .credit-card:hover {
+  background: #FDDCC4;
 }
 .section-donation .donation-info .credit-card .card-logo {
   background-image: url(../../assets/svg/credit-card.svg);
