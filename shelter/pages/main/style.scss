@@ -339,6 +339,10 @@ body {
             border-radius: 9px;
             font: $font-georgia-small;
             letter-spacing: 0.06em;
+            transition: 0.5s;
+            &:hover {
+                background: $color-primary-light;
+            }
             .card-logo{
                 background-image: url(../../assets/svg/credit-card.svg);
                 width: 30px;
