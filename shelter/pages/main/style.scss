@@ -22,9 +22,13 @@ $color-dark-l: #545454;
 $color-light-l: #F6F6F6;
 $color-light-s: #FAFAFA;
 $color-white: #FFFFFF;
-$section-padding : 80px 0 100px 0;
+$section-padding : 80px 40px 100px 40px;
+$section-padding-768 : 80px 30px 100px 30px;
+$section-padding-320 : 42px 10px;
 $title-font: 35px/45px 'Georgia', serif;
+$title-font-small: 25px/32px 'Georgia', serif;
 $font-georgia-small: 20px/23px 'Georgia', serif;
+$font-georgia-15: 15px/16.5px 'Georgia', serif;
 $font-arial-small: 15px/24px 'Arial', sans-serif;
 
 @mixin flex($justify: center, $align: center, $dir: row) {
@@ -57,11 +61,14 @@ $font-arial-small: 15px/24px 'Arial', sans-serif;
 
 body {
     background-color: $color-dark-s;
+    &.lock {
+        overflow: hidden;
+    }
 }
 
 .wrapper{
     box-sizing: border-box;
-    width: 1280px;
+    max-width: 1280px;
     margin: 0 auto;
 }
 
@@ -69,6 +76,23 @@ body {
     @include flex(space-between, stretch);
     padding: 60px 40px;
     background-image: url(../../assets/img/start-screen-background.png);
+    background-size: cover;
+    @media screen and (max-width: 1279px) {
+        background-image: url(../../assets/img/start-screen-background-768.png);
+        padding: 30px 30px 60px;
+    }
+    @media screen and (max-width: 767px) {
+        @include flex(space-between, center);
+        padding: 30px 10px 60px;
+        background-image: url(../../assets/img/start-screen-background-320.png);
+    }
+
+    .header-info.hidden {
+        visibility: hidden;
+        opacity: 0;
+        transition: 0.5s;
+    }
+
     a {
         @include flex($dir:column);
         align-items: center;
@@ -86,11 +110,45 @@ body {
         letter-spacing: 0.1em;
         color: $color-white;
     }
+
+    .nav-menu {
+        margin-left: auto;
+        .burger-logo {
+            display: none;
+        }
+        @media screen and (max-width: 767px) {
+            position: fixed;
+            top: 0;
+            right: -100%;
+            width: 300px;
+            height: 100%;
+            background-color: $color-dark-3xl;
+            z-index: 4;
+            transition: right 0.6s ease 0s;
+            padding: 30px 10px 0 10px;
+            .burger-logo {
+                display: flex;
+            }
+        }
+        &.open {
+            right: 0;
+            overflow: scroll;
+        }
+
+
+    }
+    
     .nav-list {
         @include flex();
         gap: 36px;
         list-style-type: none;
         padding-left: 0;
+        @media screen and (max-width: 767px) {
+            flex-direction: column;
+            padding-top: 142px;
+            padding-bottom: 20px;
+            gap: 43px;
+        }
     }
 
     .nav-element {
@@ -99,7 +157,6 @@ body {
 
     .link {
         font: $font-arial-small;
-        text-decoration: none;
         color: $color-dark-s;
         transition: 0.5s;
         &.active-link{
@@ -119,36 +176,87 @@ body {
         &:hover {
             color: $color-light-s;
         }
+        @media screen and (max-width: 767px) {
+            font: 32px/51px 'Arilal', sans-serif;
+        }
+    }
+}
+
+.dark {
+    display: block;
+    position: fixed;
+    top: 0;
+    left: 0;
+    z-index: 3;
+    width: 100%;
+    height: 100%;
+    background-color: $color-dark-3xl;
+    visibility: hidden;
+    opacity: 0;
+    transition: all 0.5s;
+    &.visible {
+        visibility: visible;
+        opacity: 0.6;
+        transition: all 0.5s;
     }
 }
 
 .start-screen {
-    @include flex(space-between);
+    @include flex(space-between, stretch);
     padding: 0 40px;
     background-image: url(../../assets/img/start-screen-background.png);
-    background-position: bottom;
+    background-size: cover;
+    background-position: center -180px;
+    @media screen and (max-width: 1279px) {
+        @include flex($dir:column);
+        padding: 0 30px;
+        gap: 100px;
+        background-image: url(../../assets/img/start-screen-background-768.png);
+        background-position: center -150px;
+    }
+    @media screen and (max-width: 767px) {
+        background-image: url(../../assets/img/start-screen-background-320.png);
+        padding: 0 10px;
+        gap: 105px;
+    }
 }
 
 .start-info {
     display: flex;
     flex-direction: column;
-    align-self: center;
-    position: relative;
-    bottom: 40px;
+    padding-top: 164px;
     gap: 42px; 
-    width: 460px;
-    color: #CDCDCD;
+    max-width: 460px;
+    color: $color-dark-s;
+    @media screen and (max-width: 1279px) {
+        padding-top: 0;
+        .main-button {
+            align-self: center;
+        }
+    }
+    @media screen and (max-width: 767px) {
+        align-items: center;
+    }
 }
 
 .start-title {
     width: 310px;
     font: 44px/1.3 'Georgia';
     color: $color-white;
+    @media screen and (max-width: 767px) {
+        font: $title-font-small;
+        letter-spacing: 0.06em;
+        width: 240px;
+        text-align: center;
+    }
 }
 
 .start-text {
     font: $font-arial-small;
     color: $color-dark-s;
+    @media screen and (max-width: 767px) {
+        text-align: center;
+    }
 }
 
 .main-button {
@@ -163,6 +271,19 @@ body {
 
 .start-image {
     display: flex;
+    position: relative;
+    @media screen and (max-width: 1279px) {
+        left: 69px;
+        img {
+            max-width: 569px;
+        }
+    }
+    @media screen and (max-width: 767px) {
+        left: 20px;
+        img {
+            max-width: 260px;
+        }
+    }
 }
 
 .section {
@@ -170,14 +291,27 @@ body {
     @include flex();
     gap: 120px;
     padding: $section-padding;
+    @media screen and (max-width: 1279px) {
+        flex-direction: column-reverse;
+        padding: $section-padding-768;
+        gap: 80px;
+    }
+    @media screen and (max-width: 767px) {
+        padding: $section-padding-320;
+        text-align: justify;
+        gap: 42px;
+    }
 }
 
 .about-info {
     @include flex($dir: column, $align:flex-start);
-    width: 430px;
+    max-width: 430px;
     gap: 25px;
     .section-title {
-        width: 370px;
+        max-width: 370px;
+    }
+    @media screen and (max-width: 767px) {
+        padding: 0 15px;
     }
 }
 
@@ -190,10 +324,19 @@ body {
     font: $title-font;
     letter-spacing: 0.06em;
     color: $color-dark-l;
+    @media screen and (max-width: 767px) {
+        font: $title-font-small;
+        text-align: center;
+    }
 }
 
 .section-image {
     display: flex;
+    @media screen and (max-width: 767px) {
+        img {
+            width: 260px;
+        }
+    }
 }
 
 .section-pets {
@@ -201,19 +344,33 @@ body {
     gap: 60px;
     background: $color-light-l;
     .section-title {
-        width: 400px;
+        max-width: 400px;
         text-align: center;
+    }
+    @media screen and (max-width: 767px) {
+        gap: 42px;
     }
 }
 
 .slider {
     @include flex();
     column-gap: 53px;
+    @media screen and (max-width: 1279px) {
+        column-gap: 12px;
+    }
+    @media screen and (max-width: 767px) {
+        flex-wrap: wrap;
+        max-width: 350px;
+        gap: 20px 80px;
+    }
 }
 
 .card-container {
     @include flex();
     gap: 90px;
+    @media screen and (max-width: 1279px) {
+        gap: 40px;
+    }
 }
 
 .arrow-button {
@@ -234,6 +391,9 @@ body {
         background-color: $color-primary-light;
         border-color: $color-primary-light;
     }
+    @media screen and (max-width: 767px) {
+        order: 1;
+    }
 }
 
 .card {
@@ -252,6 +412,17 @@ body {
             border-color: $color-primary-light;
         };
     }
+    &:last-child {
+        @media screen and (max-width: 1279px) {
+            display: none;
+        }   
+    }
+    &:nth-child(2) {
+        @media screen and (max-width: 767px) {
+            display: none;
+        }   
+    }
+    
     span {
         font: $font-georgia-small;
         letter-spacing: 0.06em;
@@ -263,8 +434,11 @@ body {
     @include flex($dir: column);
     gap: 60px;
     .section-title {
-        width: 310px;
+        max-width: 310px;
         text-align: center;
+    }
+    @media screen and (max-width: 767px) {
+        gap: 42px;
     }
 }
 
@@ -272,7 +446,16 @@ body {
     @include flex();
     gap: 55px 120px;
     flex-wrap: wrap;
-    padding: 0 87px;
+    padding: 0 47px;
+    @media screen and (max-width: 1279px) {
+        gap: 55px 60px;
+        padding: 0;
+    }
+    @media screen and (max-width: 767px) {
+        justify-content: flex-start;
+        max-width: 290px;
+        gap: 30px;
+    }
 }
 
 .list-item {
@@ -306,25 +489,52 @@ body {
     &:nth-child(9) {
         background-image: url(../../assets/svg/icon-sleeping-area.svg);
     }
+    @media screen and (max-width: 1279px) {
+        width: 24%;
+    }
+    @media screen and (max-width: 767px) {
+        background-size: 50px 50px;
+        width: 130px;
+        &:last-child {
+            justify-self:first baseline;
+        }
+    }
     div {
         padding-top: 90px;
         font: $font-georgia-small;
         letter-spacing: 0.06em;
         color: $color-dark-l;
+        @media screen and (max-width: 767px) {
+            font: $font-georgia-15;
+            padding-top: 70px;
+        }
     }
 }
 
 .section-donation {
     gap: 30px;
     background-color: $color-light-l;
+    @media screen and (max-width: 1279px) {
+        gap: 60px;        
+    }
+    @media screen and (max-width: 767px) {
+        gap: 42px;        
+    }
     .donation-info {
         @include flex(center, flex-start, column);
-        width: 380px;
+        max-width: 380px;
         gap: 20px;
+        @media screen and (max-width: 767px) {
+            align-items: center;        
+        }
         .donation-contact {
-            font: 15px/16.5px 'Georgia', serif;
+            font: $font-georgia-15;
             letter-spacing: 0.06em;
             color: $color-dark-l;
+            @media screen and (max-width: 767px) {
+                font: 15px/24px 'Georgia', serif;
+                letter-spacing: 0;        
+            }
         }
         .credit-card {
             @include flex();
@@ -337,6 +547,9 @@ body {
             transition: 0.5s;
             &:hover {
                 background: $color-primary-light;
+            }
+            @media screen and (max-width: 767px) {
+                font: 15px/24px 'Georgia', serif ;        
             }
             .card-logo{
                 background-image: url(../../assets/svg/credit-card.svg);
@@ -351,6 +564,9 @@ body {
         .donation-text {
             font: italic 12px/1.5 'Arial', sans-serif;
             color: $color-dark-m;
+            @media screen and (max-width: 767px) {
+                width: 280px;        
+            }
         }
     }
 }
@@ -359,16 +575,51 @@ body {
     @include flex(space-between, flex-start);
     padding: 40px 40px 0 40px;
     background-image: url(../../assets/img/footer-background.png);
+    background-size: cover;
+    @media screen and (max-width: 1279px) {
+        @include flex($dir: column, $align: center); 
+        gap: 65px;
+        padding: 30px 30px 0 30px;
+        background-image: url(../../assets/img/footer-background-768.png);
+    }
+    @media screen and (max-width: 767px) {
+        padding: 30px 10px 0 10px;
+        gap: 40px;
+        background-image: url(../../assets/img/footer-background-320.png);
+    }
+    .footer-info-container {
+        @include flex();
+        gap: 160px;
+        padding-top: 16px;
+        @media screen and (max-width: 1279px) {
+            gap: 60px;   
+            padding-top: 0;  
+        }
+        @media screen and (max-width: 767px) {
+            flex-direction: column; 
+            gap: 40px;       
+        }
+    }
     .contacts-container {
         @include flex(space-between, flex-start, column);
         width: 279px;
         height: 234px;
-        padding-top: 16px;
         &:nth-child(2) {
             width: 302px;
         }
+        @media screen and (max-width: 767px) {
+            gap: 40px;
+            height: auto;
+            &:first-child {
+                align-items: center;
+            }    
+        }
         .section-title {
             color: $color-white;
+            @media screen and (max-width: 767px) {
+                width: 280px; 
+                align-self: center;      
+            }
         }
         .contact {
             @include flex();
@@ -396,7 +647,41 @@ body {
     }
     .footer-logo {
         display: flex;
+        @media screen and (max-width: 767px) {
+            img {
+                width: 260px;
+            }    
+        }
+    } 
+}
+
+@media screen and (max-width: 767px) {
+    .hamburger {
+        z-index: 5;
+        @include flex($dir: column);
+        gap: 8px;
+        margin-right: 43px;
+        margin-left: auto;
+        width: 30px;
+        height: 30px;
+        cursor: pointer;
+        .line {
+            height: 2px;
+            width: 30px;
+            background: $color-primary;
+            z-index: 15;
+            transition: all 0.6s ease 0s;;
+        }
+        &.open {
+            .line {
+                transform: translateX(-1px) rotate(90deg);
+            }
+            .line:first-child {
+                transform: translate(-11px, 10px) rotate(90deg);
+            }
+            .line:last-child {
+                transform: translate(9px, -10px) rotate(90deg);
+            }
+        }
     }
-    
-    
 }
