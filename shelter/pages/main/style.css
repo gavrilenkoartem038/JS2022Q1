@@ -700,11 +700,11 @@ body.lock {
   flex-direction: column;
   justify-content: space-between;
   align-items: flex-start;
-  width: 279px;
+  max-width: 279px;
   height: 234px;
 }
 .footer-container .contacts-container:nth-child(2) {
-  width: 302px;
+  max-width: 302px;
 }
 @media screen and (max-width: 767px) {
   .footer-container .contacts-container {
