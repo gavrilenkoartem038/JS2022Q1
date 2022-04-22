@@ -51,6 +51,24 @@ $font-arial-small: 15px/24px 'Arial', sans-serif;
     }
 }
 
+%arrow-button {
+    width: 52px;
+    height: 52px;
+    background-color: transparent;
+    border: 2px solid $color-primary;
+    border-radius: 52px;
+    font: $font-georgia-small;
+    color: $color-dark-3xl;
+    background-position: center;
+    background-repeat: no-repeat;
+    cursor: pointer;
+    transition: 0.5s;
+    &:hover {
+        background-color: $color-primary-light;
+        border-color: $color-primary-light;
+    }
+}
+
 * {
     scroll-behavior: smooth;
 }
@@ -302,19 +320,7 @@ main {
         gap: 10px;
     }
     .arrow-button {
-        width: 52px;
-        height: 52px;
-        background-color: transparent;
-        border: 2px solid $color-primary;
-        border-radius: 52px;
-        font: $font-georgia-small;
-        color: $color-dark-3xl;
-        cursor: pointer;
-        transition: 0.5s;
-        &:hover {
-            background-color: $color-primary-light;
-            border-color: $color-primary-light;
-        }
+        @extend %arrow-button;
         &.page {
             background-color: $color-primary;
             border-color: $color-primary;
@@ -443,3 +449,5 @@ main {
         }
     }
 }
+
+@import "../popup";
