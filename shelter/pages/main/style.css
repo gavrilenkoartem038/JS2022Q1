@@ -1,3 +1,35 @@
+@keyframes fromLeft {
+  0% {
+    transform: translateX(-110%);
+  }
+  100% {
+    transform: translateX(0%);
+  }
+}
+@keyframes toRight {
+  0% {
+    transform: translateX(0%);
+  }
+  100% {
+    transform: translateX(110%);
+  }
+}
+@keyframes fromRight {
+  0% {
+    transform: translateX(110%);
+  }
+  100% {
+    transform: translateX(0%);
+  }
+}
+@keyframes toLeft {
+  0% {
+    transform: translateX(0%);
+  }
+  100% {
+    transform: translateX(-110%);
+  }
+}
 @font-face {
   font-family: "Georgia";
   font-style: normal;
@@ -414,12 +446,25 @@ body.lock {
   }
 }
 
+.slider-cards-container {
+  display: flex;
+  position: relative;
+  overflow: hidden;
+}
+
 .card-container {
   display: flex;
   flex-direction: row;
   justify-content: center;
   align-items: center;
   gap: 90px;
+  animation: fromRight 1s 1;
+  animation-fill-mode: forwards;
+}
+.card-container.previous {
+  position: absolute;
+  animation: toLeft 1s 1;
+  animation-fill-mode: forwards;
 }
 @media screen and (max-width: 1279px) {
   .card-container {
