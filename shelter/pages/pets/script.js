@@ -64,7 +64,7 @@ function closePopup () {
     document.body.classList.remove('lock');
 }
 
+const popupDark = document.querySelector('.popup-dark')
+
 popupClose.addEventListener('click', () => closePopup())
-popup.addEventListener('click', e => {
-    if (e.target == popup) closePopup();
-})
+popupDark.addEventListener('click', () => closePopup())
