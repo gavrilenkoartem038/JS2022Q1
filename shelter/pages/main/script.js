@@ -39,13 +39,11 @@ function getFile (fileName) {
 
 let data = getFile('../../pets.json');
 
-let cards = document.querySelectorAll('.card');
 const popup = document.querySelector('.popup');
 const popupInfo = document.querySelector('.popup-info');
 const popupClose = document.querySelector('.popup-close');
 
 let container = document.querySelector('.slider-cards-container')
-
 
 container.addEventListener('click', e => {
     if(e.target.closest('.card')){
@@ -70,10 +68,11 @@ function closePopup () {
     document.body.classList.remove('lock');
 }
 
+const popupDark = document.querySelector('.popup-dark')
+
 popupClose.addEventListener('click', () => closePopup())
-popup.addEventListener('click', e => {
-    if (e.target == popup) closePopup();
-})
+popupDark.addEventListener('click', () => closePopup())
+
 
 //slider
 const buttonLeft = document.querySelector('.button-left');
@@ -139,7 +138,7 @@ function changeSlides() {
     previousCards.classList.remove('new')
     previousCards.classList.add("previous");
     chooseNewCards();
-    setTimeout(() => previousCards.remove(), 1000);
+    setTimeout(() => previousCards.remove(), 900);
 }
 
 buttonLeft.addEventListener('click', e => {
