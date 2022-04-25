@@ -39,13 +39,11 @@ function getFile (fileName) {
 
 let data = getFile('../../pets.json');
 
-let cards = document.querySelectorAll('.card');
 const popup = document.querySelector('.popup');
 const popupInfo = document.querySelector('.popup-info');
 const popupClose = document.querySelector('.popup-close');
 
 let container = document.querySelector('.slider-cards-container')
-
 
 container.addEventListener('click', e => {
     if(e.target.closest('.card')){
