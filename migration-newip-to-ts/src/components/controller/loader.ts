@@ -6,9 +6,9 @@ class Loader {
         this.options = options;
     }
 
-    getResp(
+    getResp<T>(
         { endpoint, options = {} }: RespType,
-        callback = () => {
+        callback: Callback<T> = () => {
             console.error('No callback for GET response');
         }
     ): void {
@@ -50,3 +50,5 @@ type RespType = {
     endpoint: string;
     options?: { [key: string]: string };
 };
+
+export type Callback<T> = (data: T) => void;
