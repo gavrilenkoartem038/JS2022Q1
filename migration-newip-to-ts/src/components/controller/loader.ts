@@ -7,11 +7,11 @@ class Loader {
     }
 
     getResp(
-        { endpoint, options = {} }: { endpoint: string; options: { [key: string]: string } },
+        { endpoint, options = {} }: RespType,
         callback = () => {
             console.error('No callback for GET response');
         }
-    ) {
+    ): void {
         this.load('GET', endpoint, callback, options);
     }
 
@@ -32,7 +32,6 @@ class Loader {
         Object.keys(urlOptions).forEach((key) => {
             url += `${key}=${urlOptions[key]}&`;
         });
-        console.log(this.baseLink);
         return url.slice(0, -1);
     }
 
@@ -46,3 +45,8 @@ class Loader {
 }
 
 export default Loader;
+
+type RespType = {
+    endpoint: string;
+    options?: { [key: string]: string };
+};
