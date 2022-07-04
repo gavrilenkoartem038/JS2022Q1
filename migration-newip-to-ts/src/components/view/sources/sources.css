@@ -9,7 +9,7 @@
 
 .source__item {
     background: none;
-    border: 2px solid #30c5ff;
+    border: 2px solid #f3f8fa;
     font: inherit;
     line-height: 1;
     margin: 0.5em;
@@ -37,8 +37,20 @@
 }
 
 .symbols-container {
-  display: flex;
-  gap: 20px;
-  flex-wrap: wrap;
-  justify-content: center;
+    display: flex;
+    gap: 20px;
+    flex-wrap: wrap;
+    justify-content: center;
+}
+
+.symbol-category {
+  color: #70d6ff;
+  transition: 0.25s;
+    cursor: pointer;
+}
+
+.symbol-category:hover,
+.symbol-category:focus {
+    color: #69db7e;
+    transform: translateY(-0.15em);
 }

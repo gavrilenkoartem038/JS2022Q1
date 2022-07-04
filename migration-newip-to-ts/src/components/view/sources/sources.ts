@@ -2,7 +2,7 @@ import './sources.css';
 import { ISource } from '../../../types/interface';
 
 class Sources {
-    draw(data: ISource[]) {
+    public draw(data: ISource[]): void {
         const fragment = document.createDocumentFragment();
         const symbolsContainer = document.querySelector('.symbols-container') as HTMLElement;
         const sourceItemTemp = document.querySelector('#sourceItemTemp') as HTMLTemplateElement;
@@ -32,7 +32,6 @@ class Sources {
 
     show(e: Event) {
         const elem = e.target as HTMLElement;
-        console.log(elem);
         if (elem.classList.contains('symbol-category')) {
             const elements = document.querySelectorAll('.source__item');
             elements.forEach((el) => {
