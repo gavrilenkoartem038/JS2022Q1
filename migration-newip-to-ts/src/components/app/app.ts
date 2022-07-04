@@ -5,16 +5,16 @@ import { AppView } from '../view/appView';
 import Sources from '../view/sources/sources';
 
 class App {
-    controller: AppController;
-    view: AppView;
-    sources: Sources;
+    private controller: AppController;
+    private view: AppView;
+    private sources: Sources;
     constructor() {
         this.controller = new AppController();
         this.view = new AppView();
         this.sources = new Sources();
     }
 
-    start() {
+    public start(): void {
         (document.querySelector('.sources') as HTMLElement).addEventListener('click', (e) =>
             this.controller.getNews(e, (data: INews) => this.view.drawNews(data))
         );
