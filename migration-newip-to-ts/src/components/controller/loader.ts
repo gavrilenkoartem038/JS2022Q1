@@ -1,7 +1,5 @@
 class Loader {
-    private baseLink: string;
-    private options: { [key: string]: string };
-    constructor(baseLink: string, options: { [key: string]: string }) {
+    constructor(private baseLink: string, private options: { [key: string]: string }) {
         this.baseLink = baseLink;
         this.options = options;
     }
@@ -17,7 +15,7 @@ class Loader {
 
     private errorHandler(res: Response): Response {
         if (!res.ok) {
-            if (res.status === 401 || res.status === 404)
+            if (res.status === ResponseCode.Unauthorized || res.status === ResponseCode.PageNotFound)
                 console.log(`Sorry, but there is ${res.status} error: ${res.statusText}`);
             throw Error(res.statusText);
         }
@@ -50,5 +48,11 @@ type RespType = {
     endpoint: string;
     options?: { [key: string]: string };
 };
+
+enum ResponseCode {
+    OK = 200,
+    Unauthorized = 401,
+    PageNotFound = 404,
+}
 
 export type Callback<T> = (data: T) => void;

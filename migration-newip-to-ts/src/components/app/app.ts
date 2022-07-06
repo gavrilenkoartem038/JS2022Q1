@@ -5,13 +5,23 @@ import { AppView } from '../view/appView';
 import Sources from '../view/sources/sources';
 
 class App {
+    static instance: App;
+
     private controller: AppController;
     private view: AppView;
     private sources: Sources;
-    constructor() {
+
+    private constructor() {
         this.controller = new AppController();
         this.view = new AppView();
         this.sources = new Sources();
+    }
+
+    public static getInstance(): App {
+        if (!App.instance) {
+            App.instance = new App();
+        }
+        return App.instance;
     }
 
     public start(): void {

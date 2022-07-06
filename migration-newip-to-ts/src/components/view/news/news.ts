@@ -3,14 +3,17 @@ import { INew } from '../../../types/interface';
 
 class News {
     public draw(data: INew[]): void {
-        const news: INew[] = data.length >= 10 ? data.filter((_item, idx) => idx < 10) : data;
+        const maxNewsOnPage = 10;
+        const news: INew[] = data.length >= maxNewsOnPage ? data.filter((_item, idx) => idx < 10) : data;
         const fragment = document.createDocumentFragment();
         const newsItemTemp = document.querySelector('#newsItemTemp') as HTMLTemplateElement;
 
         news.forEach((item: INew, idx: number) => {
             const newsClone = newsItemTemp.content.cloneNode(true) as HTMLTemplateElement;
 
-            if (idx % 2) (newsClone.querySelector('.news__item') as HTMLElement).classList.add('alt');
+            if (idx % 2) {
+                (newsClone.querySelector('.news__item') as HTMLElement).classList.add('alt');
+            }
 
             (newsClone.querySelector('.news__meta-photo') as HTMLElement).style.backgroundImage = `url(${
                 item.urlToImage || 'img/news_placeholder.jpg'
