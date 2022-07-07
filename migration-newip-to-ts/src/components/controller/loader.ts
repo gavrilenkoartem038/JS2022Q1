@@ -34,7 +34,7 @@ class Loader {
         return url.slice(0, -1);
     }
 
-    private load<Data>(method: 'GET' | 'POST', endpoint: string, callback: (data: Data) => void, options = {}): void {
+    private load<Data>(method: HttpMethod, endpoint: string, callback: (data: Data) => void, options = {}): void {
         fetch(this.makeUrl(options, endpoint), { method })
             .then(this.errorHandler.bind(this))
             .then((res) => res.json())
@@ -49,6 +49,8 @@ type RespType = {
     endpoint: string;
     options?: { [key: string]: string };
 };
+
+type HttpMethod = 'GET' | 'POST' | 'PUT' | 'HEAD' | 'DELETE' | 'CONNECT' | 'OPTIONS' | 'TRACE' | 'PATCH';
 
 enum ResponseCode {
     OK = 200,

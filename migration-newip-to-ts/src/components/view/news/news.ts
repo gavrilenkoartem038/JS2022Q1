@@ -4,7 +4,7 @@ import { INew } from '../../../types/interface';
 class News {
     public draw(data: INew[]): void {
         const maxNewsOnPage = 10;
-        const news: INew[] = data.length >= maxNewsOnPage ? data.filter((_item, idx) => idx < 10) : data;
+        const news: INew[] = data.length >= maxNewsOnPage ? data.filter((_item, idx) => idx < maxNewsOnPage) : data;
         const fragment = document.createDocumentFragment();
         const newsItemTemp = document.querySelector('#newsItemTemp') as HTMLTemplateElement;
 
