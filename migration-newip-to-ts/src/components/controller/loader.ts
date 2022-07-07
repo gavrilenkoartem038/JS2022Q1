@@ -1,5 +1,5 @@
 class Loader {
-    constructor(private baseLink: string, private options: { [key: string]: string }) {
+    protected constructor(private baseLink: string, private options: { [key: string]: string }) {
         this.baseLink = baseLink;
         this.options = options;
     }
@@ -15,8 +15,9 @@ class Loader {
 
     private errorHandler(res: Response): Response {
         if (!res.ok) {
-            if (res.status === ResponseCode.Unauthorized || res.status === ResponseCode.PageNotFound)
+            if (res.status === ResponseCode.Unauthorized || res.status === ResponseCode.PageNotFound) {
                 console.log(`Sorry, but there is ${res.status} error: ${res.statusText}`);
+            }
             throw Error(res.statusText);
         }
 

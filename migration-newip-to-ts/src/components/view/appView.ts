@@ -5,7 +5,7 @@ import { ISources, INews, INew, ISource } from '../../types/interface';
 export class AppView {
     private readonly news: News;
     private readonly sources: Sources;
-    constructor() {
+    public constructor() {
         this.news = new News();
         this.sources = new Sources();
     }

@@ -5,7 +5,7 @@ import { AppView } from '../view/appView';
 import Sources from '../view/sources/sources';
 
 class App {
-    static instance: App;
+    private static instance: App;
 
     private controller: AppController;
     private view: AppView;

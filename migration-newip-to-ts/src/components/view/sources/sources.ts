@@ -30,7 +30,7 @@ class Sources {
         });
     }
 
-    show(e: Event) {
+    public show(e: Event) {
         const elem = e.target as HTMLElement;
         if (elem.classList.contains('symbol-category')) {
             const elements = document.querySelectorAll('.source__item');
