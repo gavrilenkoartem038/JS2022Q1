@@ -1,0 +1,96 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta http-equiv="X-UA-Compatible" content="IE=edge">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Document</title>
+</head>
+<body>
+  <div class="wrapper">
+    <header class="header">
+      <div>Online car store</div>
+    </header>
+    <main class="main">
+      <div class="filter-container">
+        <div class="filter-part">
+          <input type="text" placeholder="search" class="search">
+        </div>
+        <div class="filter-part">
+          <select name="select" class="select">
+              <option value="name-min">Name (a - z)</option>
+              <option value="name-max">Name (z - a)</option>
+              <option value="price-min">Price (Lowest)</option>
+              <option value="price-max">Price (Highest)</option>
+          </select>
+        </div>
+        <div class="filter-part">
+          <h5>Brand</h5>
+          <ul>
+            <li>
+              <input type="checkbox" name="brand" id="BMW">
+              <label for="BMW">BMW</label>
+            </li>
+            <li>
+              <input type="checkbox" name="brand" id="Volksvagen">
+              <label for="Volksvagen">Volksvagen</label>
+            </li>
+            <li>
+              <input type="checkbox" name="brand" id="Renault">
+              <label for="Renault">Renault</label>
+            </li>
+            <li>
+              <input type="checkbox" name="brand" id="Toyota">
+              <label for="Toyota">Toyota</label>
+            </li>
+            <li>
+              <input type="checkbox" name="brand" id="Hyundai">
+              <label for="Hyundai">Hyundai</label>
+            </li>
+          </ul>
+        </div>
+        <div class="filter-part">
+          <h5>Body</h5>
+          <ul>
+            <li>
+              <input type="checkbox" name="body" id="sedan">
+              <label for="sedan">Sedan</label>
+            </li>
+            <li>
+              <input type="checkbox" name="body" id="hatchback">
+              <label for="hatchback">Hatchback</label>
+            </li>
+            <li>
+              <input type="checkbox" name="body" id="SUV">
+              <label for="SUV">SUV</label>
+            </li>
+          </ul>
+        </div>
+        <div class="filter-part">
+          <h5>Fuel type</h5>
+          <ul>
+            <li>
+              <input type="checkbox" name="fuelType" id="petrol">
+              <label for="petrol">Petrol</label>
+            </li>
+            <li>
+              <input type="checkbox" name="fuelType" id="diesel">
+              <label for="diesel">Diesel</label>
+            </li>
+          </ul>
+        </div>
+        <div class="filter-part">
+          <h5>Engine size</h5>
+          <div class="slider engineSize"></div>
+        </div>
+        <div class="filter-part">
+          <h5>Price</h5>
+          <div class="slider price"></div>
+        </div>
+      </div>
+      <div class="cards-container"></div>
+    </main>
+    <footer class="footer"></footer>
+  </div>
+</body>
+</html>
