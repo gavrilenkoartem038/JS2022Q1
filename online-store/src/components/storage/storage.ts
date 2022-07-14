@@ -16,10 +16,8 @@ class Storage {
             engineSize: [],
             price: [],
             search: [],
-            sortOrder: [],
         };
         storageObject.search[0] = this.search.value;
-        storageObject.sortOrder[0] = this.select.value;
         storageObject.brand = setCheckboxStorage('brand');
         storageObject.body = setCheckboxStorage('body');
         storageObject.fuelType = setCheckboxStorage('fuelType');
@@ -27,17 +25,18 @@ class Storage {
         storageObject.engineSize = (this.engineSize.noUiSlider as noUiSlider.API).get() as string[];
 
         localStorage.setItem('storageObject', JSON.stringify(storageObject));
+        localStorage.setItem('sortOrder', this.select.value);
     }
 
     public static getStorage() {
         const storageObject = JSON.parse(localStorage.getItem('storageObject') as string) as FinalObj;
         this.setSettings(storageObject);
+        this.select.value = localStorage.getItem('sortOrder') as string;
         return storageObject;
     }
 
     private static setSettings(object: FinalObj) {
         this.search.value = object.search[0];
-        this.select.value = object.sortOrder[0];
         this.clickCheckboxes('brand', object);
         this.clickCheckboxes('body', object);
         this.clickCheckboxes('fuelType', object);

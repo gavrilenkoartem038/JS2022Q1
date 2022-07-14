@@ -11,12 +11,11 @@ let startObject: FinalObj = {
     engineSize: [],
     price: [],
     search: [],
-    sortOrder: [],
 };
 
 createSliders();
 
-if (localStorage.length === 0) {
+if (localStorage.getItem('storageObject') === null) {
     startObject = {
         brand: ['BMW', 'Volkswagen', 'Renault', 'Toyota', 'Hyundai'],
         body: ['sedan', 'hatchback', 'SUV'],
@@ -24,7 +23,6 @@ if (localStorage.length === 0) {
         engineSize: ['1.4', '4.0'],
         price: ['12.99', '75.99'],
         search: [''],
-        sortOrder: [''],
     };
     renderData(startObject);
 } else {
