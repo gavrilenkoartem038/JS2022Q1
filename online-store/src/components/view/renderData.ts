@@ -4,7 +4,7 @@ import Card from './card';
 import Sort from '../filter/sort';
 import { FinalObj } from '../../types/interface';
 
-function renderData(object: FinalObj) {
+function renderData(object: FinalObj, event?: Event) {
     const select = document.querySelector('.select') as HTMLSelectElement;
     const selectOptions = select.value.split('-');
 
@@ -13,8 +13,9 @@ function renderData(object: FinalObj) {
     } else {
         Sort.sortByPrice(data, selectOptions[1]);
     }
+
     let cardsOnPage = 0;
-    const finalObj = createData(object);
+    const finalObj = createData(object, event);
     const cardsContainer = document.querySelector('.cards-container') as HTMLElement;
     cardsContainer.innerHTML = '';
     data.forEach((car) => {

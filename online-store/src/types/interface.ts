@@ -15,4 +15,5 @@ export interface FinalObj {
     engineSize: string[];
     price: string[];
     search: string[];
+    sortOrder: string[];
 }
