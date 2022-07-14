@@ -2,8 +2,9 @@ import createData from '../filter/createData';
 import data from '../../data';
 import Card from './card';
 import Sort from '../filter/sort';
+import { FinalObj } from '../../types/interface';
 
-function renderData() {
+function renderData(object: FinalObj) {
     const select = document.querySelector('.select') as HTMLSelectElement;
     const selectOptions = select.value.split('-');
 
@@ -12,8 +13,8 @@ function renderData() {
     } else {
         Sort.sortByPrice(data, selectOptions[1]);
     }
-
-    const finalObj = createData();
+    let cardsOnPage = 0;
+    const finalObj = createData(object);
     const cardsContainer = document.querySelector('.cards-container') as HTMLElement;
     cardsContainer.innerHTML = '';
     data.forEach((car) => {
@@ -29,8 +30,14 @@ function renderData() {
         ) {
             const card = new Card();
             card.create(car);
+            cardsOnPage++;
         }
     });
+    if (cardsOnPage === 0) {
+        const emptyPage = document.createElement('div');
+        emptyPage.innerHTML = 'No cars matching your search parameters';
+        cardsContainer.append(emptyPage);
+    }
 }
 
 export default renderData;
