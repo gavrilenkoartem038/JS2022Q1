@@ -1,7 +1,7 @@
 import { Car } from '../../types/interface';
 
 class Card {
-    public create(data: Car): void {
+    public create(data: Car, inCart: boolean): void {
         const card = document.createElement('div') as HTMLElement;
         card.classList.add('card');
         card.id = data.id;
@@ -14,7 +14,7 @@ class Card {
         <div class="${data.fuelType}">${data.fuelType}</div>
         <div class="${data.engineSize}">${data.engineSize}</div>
         <div class="${data.price}">${data.price}$</div>
-        <button class 'cart-button'>Add to cart</button>`;
+        <button class='cart-button ${inCart ? 'in-cart' : ''}'>Add to cart</button>`;
         (document.querySelector('.cards-container') as HTMLElement).append(card);
     }
 }

@@ -1,3 +1,4 @@
+import addToCart from './components/filter/cart';
 import Storage from './components/storage/storage';
 import createSliders from './components/view/createSliders';
 import renderData from './components/view/renderData';
@@ -39,3 +40,5 @@ document.querySelectorAll('input[type=checkbox], .slider, .select').forEach((el)
 window.addEventListener('load', () => {
     renderData(startObject);
 });
+
+(document.querySelector('.cards-container') as HTMLElement).addEventListener('click', (e) => addToCart(e));

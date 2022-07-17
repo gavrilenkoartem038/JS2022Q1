@@ -7,6 +7,8 @@ import { FinalObj } from '../../types/interface';
 function renderData(object: FinalObj, event?: Event) {
     const select = document.querySelector('.select') as HTMLSelectElement;
     const selectOptions = select.value.split('-');
+    const cartIds = JSON.parse(localStorage.getItem('cart') as string) as string[];
+    console.log(cartIds);
 
     if (selectOptions[0] === 'name') {
         Sort.sortByName(data, selectOptions[1]);
@@ -31,7 +33,7 @@ function renderData(object: FinalObj, event?: Event) {
             (!finalObj.popular || finalObj.popular === car.popular)
         ) {
             const card = new Card();
-            card.create(car);
+            card.create(car, cartIds.includes(car.id));
             cardsOnPage++;
         }
     });
@@ -40,6 +42,9 @@ function renderData(object: FinalObj, event?: Event) {
         emptyPage.innerHTML = 'No cars matching your search parameters';
         cardsContainer.append(emptyPage);
     }
+
+    const cart = document.querySelector('.cart') as HTMLElement;
+    cart.innerHTML = cartIds.length.toString();
 }
 
 export default renderData;
