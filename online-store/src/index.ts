@@ -1,9 +1,11 @@
-import addToCart from './components/filter/cart';
+import addToCart from './components/filter/addToCart';
+import resetFilter from './components/filter/resetFilter';
 import Storage from './components/storage/storage';
 import createSliders from './components/view/createSliders';
 import renderData from './components/view/renderData';
 import './style.scss';
 import { FinalObj } from './types/interface';
+import * as noUiSlider from 'nouislider';
 
 let startObject: FinalObj = {
     brand: [],
@@ -32,9 +34,15 @@ if (localStorage.getItem('storageObject') === null) {
     startObject = Storage.getStorage();
 }
 
-document.querySelectorAll('input[type=checkbox], .slider, .select').forEach((el) => {
+document.querySelectorAll('input[type=checkbox], .select').forEach((el) => {
     el.addEventListener('click', (event) => renderData(startObject, event));
 });
+
+const engineSize = document.querySelector('.engineSize') as noUiSlider.target;
+const price = document.querySelector('.price') as noUiSlider.target;
+(engineSize.noUiSlider as noUiSlider.API).on('set', () => renderData(startObject));
+(price.noUiSlider as noUiSlider.API).on('set', () => renderData(startObject));
+
 (document.querySelector('.search') as HTMLInputElement).addEventListener('input', () => renderData(startObject));
 
 window.addEventListener('load', () => {
@@ -42,3 +50,12 @@ window.addEventListener('load', () => {
 });
 
 (document.querySelector('.cards-container') as HTMLElement).addEventListener('click', (e) => addToCart(e));
+
+(document.querySelector('.settings-reset-btn') as HTMLElement).addEventListener('click', () => {
+    localStorage.clear();
+    location.reload();
+});
+
+(document.querySelector('.filter-reset-btn') as HTMLElement).addEventListener('click', () => {
+    resetFilter();
+});

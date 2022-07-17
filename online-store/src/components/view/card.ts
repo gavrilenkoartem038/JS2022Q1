@@ -1,12 +1,11 @@
 import { Car } from '../../types/interface';
 
 class Card {
-    public create(data: Car, inCart: boolean): void {
+    public create(data: Car, inCart?: boolean): void {
         const card = document.createElement('div') as HTMLElement;
         card.classList.add('card');
         card.id = data.id;
-        card.innerHTML = `<div class="${data.brand}">${data.brand}</div>
-        <div class="${data.model}">${data.model}</div>
+        card.innerHTML = `<div>${data.brand} ${data.model}</div>
         <div class="image-container">
           <img src="./assets/images/${data.image}">    
         </div>

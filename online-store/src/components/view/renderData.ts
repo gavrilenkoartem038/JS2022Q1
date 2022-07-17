@@ -8,7 +8,6 @@ function renderData(object: FinalObj, event?: Event) {
     const select = document.querySelector('.select') as HTMLSelectElement;
     const selectOptions = select.value.split('-');
     const cartIds = JSON.parse(localStorage.getItem('cart') as string) as string[];
-    console.log(cartIds);
 
     if (selectOptions[0] === 'name') {
         Sort.sortByName(data, selectOptions[1]);
@@ -20,20 +19,25 @@ function renderData(object: FinalObj, event?: Event) {
     const finalObj = createData(object, event);
     const cardsContainer = document.querySelector('.cards-container') as HTMLElement;
     cardsContainer.innerHTML = '';
+    console.log(Number(finalObj.price[1]));
     data.forEach((car) => {
         if (
             finalObj.body.includes(car.body) &&
             finalObj.brand.includes(car.brand) &&
             finalObj.fuelType.includes(car.fuelType) &&
-            finalObj.price[0] <= car.price &&
-            finalObj.price[1] >= car.price &&
-            finalObj.engineSize[0] <= car.engineSize &&
-            finalObj.engineSize[1] >= car.engineSize &&
+            Number(finalObj.price[0]) <= Number(car.price) &&
+            Number(finalObj.price[1]) >= Number(car.price) &&
+            Number(finalObj.engineSize[0]) <= Number(car.engineSize) &&
+            Number(finalObj.engineSize[1]) >= Number(car.engineSize) &&
             `${car.brand} ${car.model}`.toLowerCase().includes(finalObj.search[0]) &&
             (!finalObj.popular || finalObj.popular === car.popular)
         ) {
             const card = new Card();
-            card.create(car, cartIds.includes(car.id));
+            if (cartIds !== null) {
+                card.create(car, cartIds.includes(car.id));
+            } else {
+                card.create(car);
+            }
             cardsOnPage++;
         }
     });
@@ -44,7 +48,9 @@ function renderData(object: FinalObj, event?: Event) {
     }
 
     const cart = document.querySelector('.cart') as HTMLElement;
-    cart.innerHTML = cartIds.length.toString();
+    if (cartIds !== null) {
+        cart.innerHTML = cartIds.length.toString();
+    }
 }
 
 export default renderData;

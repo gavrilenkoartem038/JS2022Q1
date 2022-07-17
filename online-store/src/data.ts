@@ -52,7 +52,7 @@ export default [
         body: 'SUV',
         fuelType: 'diesel',
         engineSize: '4.0',
-        price: '73.49',
+        price: '73.490',
     },
     {
         id: '6',
