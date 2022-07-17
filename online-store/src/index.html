@@ -4,6 +4,7 @@
   <meta charset="UTF-8">
   <meta http-equiv="X-UA-Compatible" content="IE=edge">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <link href="https://fonts.googleapis.com/css2?family=Open+Sans:wght@400;700&display=swap" rel="stylesheet">
   <title>Document</title>
 </head>
 <body>
@@ -30,7 +31,7 @@
           <label for="popular">Show popular</label>
         </div>
         <div class="filter-part">
-          <h5>Brand</h5>
+          <h4>Brand</h4>
           <ul class="brand">
             <li>
               <input type="checkbox" name="brand" id="BMW">
@@ -55,7 +56,7 @@
           </ul>
         </div>
         <div class="filter-part">
-          <h5>Body</h5>
+          <h4>Body</h4>
           <ul>
             <li>
               <input type="checkbox" name="body" id="sedan">
@@ -72,7 +73,7 @@
           </ul>
         </div>
         <div class="filter-part">
-          <h5>Fuel type</h5>
+          <h4>Fuel type</h4>
           <ul>
             <li>
               <input type="checkbox" name="fuelType" id="petrol">
@@ -85,15 +86,17 @@
           </ul>
         </div>
         <div class="filter-part">
-          <h5>Engine size</h5>
+          <h4>Engine size</h4>
           <div class="slider engineSize"></div>
         </div>
         <div class="filter-part">
-          <h5>Price</h5>
+          <h4>Price</h4>
           <div class="slider price"></div>
         </div>
-        <button class="filter-reset-btn">Reset filters</button>
-        <button class="settings-reset-btn">Reset settings</button>
+        <div class="buttons">
+          <div class="filter-reset-btn button">Reset filters</div>
+          <div class="settings-reset-btn button">Reset settings</div>
+        </div>
       </div>
       <div class="cards-container"></div>
     </main>

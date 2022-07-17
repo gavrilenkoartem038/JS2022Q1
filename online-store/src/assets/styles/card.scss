@@ -1,0 +1,28 @@
+@import './variables';
+
+.card {
+  padding: 10px 0;
+  position: relative;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  gap: 5px;
+  border-radius: 6px;
+  box-shadow: rgba(0, 0, 0, 0.24) 0px 3px 8px;
+  transition: 0.3s;
+
+  &.in-cart:after {
+  content: '';
+  position: absolute;
+  top: 0;
+  left: 0;
+  right: 0;
+  bottom: 0;
+  background: rgba(0,0,0,.1);;
+  }
+
+  .price-value {
+    font-weight: bold;
+    color: $color-red;
+  }
+}

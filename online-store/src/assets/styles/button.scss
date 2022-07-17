@@ -1,0 +1,44 @@
+@import './variables';
+
+.cart-button {
+  text-align: center;
+  position: relative;
+  text-decoration: none;
+  color: white;
+  padding: 10px 0px;
+  width: 120px;
+  border-radius: 6px;
+  background-color: $color-red;
+  z-index: 2;
+  overflow: hidden;
+  transition: all 0.3s;
+  cursor: pointer;
+  
+  &:hover {
+    background-color: darken($color: $color-red, $amount: 5);
+  }
+
+  &:before {
+    content: "";
+    border: 2px;
+    position: absolute;
+    left: 15px;
+    border-radius: 10px;
+    top: 15px;
+    opacity: 0;
+    height: 10px;
+    width: 10px;
+    background-color: $color-red;
+    transition: all 0.2s linear 0s;
+  }
+  
+  &.in-cart {
+    text-indent: 15px;
+    background-color: $color-active;
+    
+    &:before {
+      opacity: 1;
+      text-indent: 0px;
+    }
+  }
+}

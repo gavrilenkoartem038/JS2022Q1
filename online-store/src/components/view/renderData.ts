@@ -19,7 +19,6 @@ function renderData(object: FinalObj, event?: Event) {
     const finalObj = createData(object, event);
     const cardsContainer = document.querySelector('.cards-container') as HTMLElement;
     cardsContainer.innerHTML = '';
-    console.log(Number(finalObj.price[1]));
     data.forEach((car) => {
         if (
             finalObj.body.includes(car.body) &&

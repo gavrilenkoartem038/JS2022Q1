@@ -4,16 +4,19 @@ class Card {
     public create(data: Car, inCart?: boolean): void {
         const card = document.createElement('div') as HTMLElement;
         card.classList.add('card');
+        if (inCart) {
+            card.classList.add('in-cart');
+        }
         card.id = data.id;
-        card.innerHTML = `<div>${data.brand} ${data.model}</div>
+        card.innerHTML = `<h3>${data.brand} ${data.model}</h3>
         <div class="image-container">
           <img src="./assets/images/${data.image}">    
         </div>
-        <div class="${data.body}">${data.body}</div>
-        <div class="${data.fuelType}">${data.fuelType}</div>
-        <div class="${data.engineSize}">${data.engineSize}</div>
-        <div class="${data.price}">${data.price}$</div>
-        <button class='cart-button ${inCart ? 'in-cart' : ''}'>Add to cart</button>`;
+        <div>Body type: ${data.body}</div>
+        <div>Fuel type: ${data.fuelType}</div>
+        <div>Engile size: ${data.engineSize}l</div>
+        <div class="price-value">Price: ${data.price}$</div>
+        <div class='cart-button ${inCart ? 'in-cart' : ''}'>${inCart ? 'In cart' : 'Add to cart'}</div>`;
         (document.querySelector('.cards-container') as HTMLElement).append(card);
     }
 }
