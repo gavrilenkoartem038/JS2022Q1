@@ -11,6 +11,7 @@ let startObject: FinalObj = {
     engineSize: [],
     price: [],
     search: [],
+    popular: false,
 };
 
 createSliders();
@@ -23,6 +24,7 @@ if (localStorage.getItem('storageObject') === null) {
         engineSize: ['1.4', '4.0'],
         price: ['12.99', '75.99'],
         search: [''],
+        popular: false,
     };
     renderData(startObject);
 } else {

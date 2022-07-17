@@ -1,5 +1,7 @@
 export default [
     {
+        id: '1',
+        popular: true,
         brand: 'BMW',
         image: 'bmw3.jpg',
         model: '3',
@@ -9,6 +11,8 @@ export default [
         price: '34.990',
     },
     {
+        id: '2',
+        popular: false,
         brand: 'BMW',
         image: 'bmw5.jpg',
         model: '5',
@@ -18,6 +22,8 @@ export default [
         price: '49.990',
     },
     {
+        id: '3',
+        popular: false,
         brand: 'BMW',
         image: 'bmwX1.jpg',
         model: 'X1',
@@ -27,6 +33,8 @@ export default [
         price: '35.690',
     },
     {
+        id: '4',
+        popular: false,
         brand: 'BMW',
         image: 'bmwX3.jpg',
         model: 'X3',
@@ -36,6 +44,8 @@ export default [
         price: '46.390',
     },
     {
+        id: '5',
+        popular: true,
         brand: 'BMW',
         image: 'bmwX5.jpg',
         model: 'X5',
@@ -45,6 +55,8 @@ export default [
         price: '73.49',
     },
     {
+        id: '6',
+        popular: true,
         brand: 'Volkswagen',
         image: 'VWGolf.jpg',
         model: 'Golf',
@@ -54,6 +66,8 @@ export default [
         price: '27.290',
     },
     {
+        id: '7',
+        popular: false,
         brand: 'Volkswagen',
         image: 'VWPolo.jpg',
         model: 'Polo',
@@ -63,6 +77,8 @@ export default [
         price: '18.690',
     },
     {
+        id: '8',
+        popular: true,
         brand: 'Volkswagen',
         image: 'VWPassat.jpg',
         model: 'Passat',
@@ -72,6 +88,8 @@ export default [
         price: '26.690',
     },
     {
+        id: '9',
+        popular: true,
         brand: 'Renault',
         image: 'renaultLogan.jpg',
         model: 'Logan',
@@ -81,6 +99,8 @@ export default [
         price: '14.390',
     },
     {
+        id: '10',
+        popular: false,
         brand: 'Renault',
         image: 'renaultStepway.jpg',
         model: 'Stepway',
@@ -90,6 +110,8 @@ export default [
         price: '15.890',
     },
     {
+        id: '11',
+        popular: true,
         brand: 'Renault',
         image: 'renaultDuster.jpg',
         model: 'Duster',
@@ -99,6 +121,8 @@ export default [
         price: '19.790',
     },
     {
+        id: '12',
+        popular: false,
         brand: 'Renault',
         image: 'renaultKaptur.jpg',
         model: 'Kaptur',
@@ -108,6 +132,8 @@ export default [
         price: '23.190',
     },
     {
+        id: '13',
+        popular: false,
         brand: 'Renault',
         image: 'renaultArkana.jpg',
         model: 'Arkana',
@@ -117,6 +143,8 @@ export default [
         price: '29.890',
     },
     {
+        id: '14',
+        popular: false,
         brand: 'Toyota',
         image: 'toyotaCorolla.jpg',
         model: 'Corolla',
@@ -126,6 +154,8 @@ export default [
         price: '25.890',
     },
     {
+        id: '15',
+        popular: true,
         brand: 'Toyota',
         image: 'toyotaCamry.jpg',
         model: 'Camry',
@@ -135,6 +165,8 @@ export default [
         price: '33.290',
     },
     {
+        id: '16',
+        popular: false,
         brand: 'Toyota',
         image: 'toyotaC-HR.jpg',
         model: 'C-HR',
@@ -144,6 +176,8 @@ export default [
         price: '34.590',
     },
     {
+        id: '17',
+        popular: true,
         brand: 'Toyota',
         image: 'toyotaRAV4.jpg',
         model: 'RAV4',
@@ -153,6 +187,8 @@ export default [
         price: '42.190',
     },
     {
+        id: '18',
+        popular: true,
         brand: 'Toyota',
         image: 'toyotaPrado.jpg',
         model: 'Land Cruiser Prado',
@@ -162,6 +198,8 @@ export default [
         price: '58.190',
     },
     {
+        id: '19',
+        popular: true,
         brand: 'Hyundai',
         image: 'hyundaiAccent.jpg',
         model: 'Accent',
@@ -171,6 +209,8 @@ export default [
         price: '15.890',
     },
     {
+        id: '20',
+        popular: false,
         brand: 'Hyundai',
         image: 'hyundaiSonata.jpg',
         model: 'Sonata',
@@ -180,6 +220,8 @@ export default [
         price: '34.490',
     },
     {
+        id: '21',
+        popular: true,
         brand: 'Hyundai',
         image: 'hyundaiCreta.jpg',
         model: 'Creta',
@@ -189,6 +231,8 @@ export default [
         price: '21.990',
     },
     {
+        id: '22',
+        popular: false,
         brand: 'Hyundai',
         image: 'hyundaiTucson.jpg',
         model: 'Tucson',
@@ -198,6 +242,8 @@ export default [
         price: '36.590',
     },
     {
+        id: '23',
+        popular: true,
         brand: 'Hyundai',
         image: 'hyundaiSantafe.jpg',
         model: 'Santa Fe',

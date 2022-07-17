@@ -7,11 +7,14 @@ function createData(object: FinalObj, event?: Event) {
     const checkboxElements = document.querySelectorAll('input[type=checkbox]');
     const target = event?.target as HTMLInputElement;
     if (Array.from(checkboxElements).includes(target)) {
-        object[target.name as keyof typeof object] = Filter.filter(target);
+        (object[target.name as keyof typeof object] as string[]) = Filter.filter(target);
     }
 
     const search = document.querySelector('.search') as HTMLInputElement;
     object.search[0] = search.value;
+
+    const popular = document.querySelector('#popular') as HTMLInputElement;
+    object.popular = popular.checked ? true : false;
 
     const price = document.querySelector('.price') as noUiSlider.target;
     const engineSize = document.querySelector('.engineSize') as noUiSlider.target;

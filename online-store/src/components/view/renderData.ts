@@ -27,7 +27,8 @@ function renderData(object: FinalObj, event?: Event) {
             finalObj.price[1] >= car.price &&
             finalObj.engineSize[0] <= car.engineSize &&
             finalObj.engineSize[1] >= car.engineSize &&
-            `${car.brand} ${car.model}`.toLowerCase().includes(finalObj.search[0])
+            `${car.brand} ${car.model}`.toLowerCase().includes(finalObj.search[0]) &&
+            (!finalObj.popular || finalObj.popular === car.popular)
         ) {
             const card = new Card();
             card.create(car);

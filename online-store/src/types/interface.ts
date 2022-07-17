@@ -1,4 +1,6 @@
 export interface Car {
+    id: string;
+    popular: boolean;
     brand: string;
     model: string;
     image: string;
@@ -15,4 +17,5 @@ export interface FinalObj {
     engineSize: string[];
     price: string[];
     search: string[];
+    popular: boolean;
 }
