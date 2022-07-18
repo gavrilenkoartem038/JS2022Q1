@@ -43,7 +43,8 @@ const price = document.querySelector('.price') as noUiSlider.target;
 (engineSize.noUiSlider as noUiSlider.API).on('set', () => renderData(startObject));
 (price.noUiSlider as noUiSlider.API).on('set', () => renderData(startObject));
 
-(document.querySelector('.search') as HTMLInputElement).addEventListener('input', () => renderData(startObject));
+const search = document.querySelector('.search') as HTMLInputElement;
+search.addEventListener('input', () => renderData(startObject));
 
 window.addEventListener('load', () => {
     renderData(startObject);
@@ -58,4 +59,11 @@ window.addEventListener('load', () => {
 
 (document.querySelector('.filter-reset-btn') as HTMLElement).addEventListener('click', () => {
     resetFilter();
+});
+
+const closeSearch = document.querySelector('.close-search') as HTMLElement;
+closeSearch.addEventListener('click', () => {
+    search.value = '';
+    renderData(startObject);
+    closeSearch.classList.toggle('active');
 });
