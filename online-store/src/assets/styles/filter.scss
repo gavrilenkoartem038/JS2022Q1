@@ -1,0 +1,71 @@
+@import './variables';
+
+.filter-container {
+  padding: 20px 40px;
+  background-color: $color-aside;
+  display: flex;
+  flex-direction: column;
+  gap: 20px;
+
+  .filter-part {
+    display: flex;
+    flex-direction: column;
+    gap: 10px;
+    li {
+      padding-top: 5px;
+    }
+  }
+
+  .search, .select {
+    padding-left: 10px;
+    height: 28px;
+    width: 220px;
+    outline: none;
+    border: 2px solid rgb(196, 195, 195);
+    border-radius: 6px;
+    font: $regular-font;   
+    transition: 0.3s;
+    &:focus {
+      box-shadow: 0 0 6px black;
+    }
+  }
+  
+  .select {
+    cursor: pointer;
+  }
+  
+  .range-part h4 {
+    padding-bottom: 40px;
+  }
+
+  .slider {
+    height: 10px;
+  }
+  
+  .slider .noUi-connect {
+    background: #c0392b;
+  }
+  
+  .slider .noUi-handle {
+    height: 18px;
+    width: 18px;
+    top: -5px;
+    right: -9px;
+    border-radius: 9px;
+  }
+
+  @media(max-width: 610px) {
+    .search-part, .select-part {
+      display: flex;
+      .search, .select {
+        width: 100%;
+      }
+    }
+    ul {
+      display: flex;
+      flex-wrap: wrap;
+      gap: 10px;
+    }
+  }
+
+}

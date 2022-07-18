@@ -24,8 +24,6 @@ class Slider {
             step: this.step,
             tooltips: true,
         });
-
-        this.sliderName.style.width = '200px';
     }
 }
 

@@ -1,6 +1,6 @@
 @import './variables';
 
-.cart-button {
+.cart-button{
   text-align: center;
   position: relative;
   text-decoration: none;
@@ -40,5 +40,28 @@
       opacity: 1;
       text-indent: 0px;
     }
+  }
+}
+
+.button{
+  text-align: center;
+  position: relative;
+  text-decoration: none;
+  color: white;
+  padding: 10px 0px;
+  width: 220px;
+  border-radius: 6px;
+  background-color: $color-red;
+  z-index: 2;
+  overflow: hidden;
+  transition: all 0.2s;
+  cursor: pointer;
+  
+  &:hover {
+    background-color: darken($color: $color-red, $amount: 5);
+  }
+  &:active {
+    background-color: $color-active;
+    transform: scale(1.05);
   }
 }

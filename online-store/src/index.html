@@ -8,25 +8,30 @@
   <title>Document</title>
 </head>
 <body>
-  <div class="wrapper">
-    <header class="header">
-      <div>Online car store</div>
-      <div class="cart">0</div>
-    </header>
-    <main class="main">
+  <header class="header">
+    <div class="wrapper">
+      <h1>Online car store</h1>
+      <div class="cart-container">
+        <img src="./assets/images/cart.png" alt="cart">
+        <div class="cart">0</div>
+      </div>
+    </div>
+  </header>
+  <main class="main">
+    <div class="wrapper">
       <div class="filter-container">
-        <div class="filter-part">
+        <div class="search-part">
           <input type="text" placeholder="search" class="search" autofocus>
         </div>
-        <div class="filter-part">
+        <div class="select-part">
           <select name="select" class="select">
-              <option value="name-min" class="option">Name (a - z)</option>
-              <option value="name-max" class="option">Name (z - a)</option>
-              <option value="price-min" class="option">Price (Lowest)</option>
-              <option value="price-max" class="option">Price (Highest)</option>
+            <option value="name-min" class="option">Name (a - z)</option>
+            <option value="name-max" class="option">Name (z - a)</option>
+            <option value="price-min" class="option">Price (Lowest)</option>
+            <option value="price-max" class="option">Price (Highest)</option>
           </select>
         </div>
-        <div class="filter-part">
+        <div class="popular-part">
           <input type="checkbox" id="popular" name="popular">
           <label for="popular">Show popular</label>
         </div>
@@ -39,7 +44,7 @@
             </li>
             <li>
               <input type="checkbox" name="brand" id="Volkswagen">
-              <label for="Volksvagen">Volkswagen</label>
+              <label for="Volkswagen">Volkswagen</label>
             </li>
             <li>
               <input type="checkbox" name="brand" id="Renault">
@@ -85,11 +90,11 @@
             </li>
           </ul>
         </div>
-        <div class="filter-part">
+        <div class="range-part">
           <h4>Engine size</h4>
           <div class="slider engineSize"></div>
         </div>
-        <div class="filter-part">
+        <div class="range-part">
           <h4>Price</h4>
           <div class="slider price"></div>
         </div>
@@ -99,8 +104,18 @@
         </div>
       </div>
       <div class="cards-container"></div>
-    </main>
-    <footer class="footer"></footer>
-  </div>
+    </div>
+  </main>
+  <footer class="footer">
+    <div class="wrapper">
+      <div class="data">
+        <span>©</span>
+        <span>2022</span>
+        <span><a class="link" href="https://github.com/gavrilenkoartem038">gavrilenkoartem038</a></span>
+      </div>
+      <div class="rss"><a class="link" href="https://rs.school/js/">Rolling Scopes School</a></div>
+    </div>
+  </footer>
 </body>
+
 </html>
