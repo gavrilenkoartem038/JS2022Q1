@@ -7,16 +7,20 @@ function addToCart(e: Event) {
                 ? (JSON.parse(localStorage.getItem('cart') as string) as string[])
                 : [];
         const parentId = element.parentElement?.id as string;
-        if (!cartIdStorage.includes(parentId)) {
+        const maxCartLength = 20;
+        if (!cartIdStorage.includes(parentId) && cartIdStorage.length < maxCartLength) {
             cartIdStorage.push(parentId);
             (element.parentElement as HTMLElement).classList.add('in-cart');
             element.innerHTML = 'In cart';
-        } else {
+            element.classList.add('in-cart');
+        } else if (cartIdStorage.includes(parentId)) {
             cartIdStorage.splice(cartIdStorage.indexOf(element.id), 1);
             (element.parentElement as HTMLElement).classList.remove('in-cart');
             element.innerHTML = 'Add to cart';
+            element.classList.remove('in-cart');
+        } else {
+            alert('Too much cars in you cart');
         }
-        element.classList.toggle('in-cart');
         localStorage.setItem('cart', JSON.stringify(cartIdStorage));
         cart.innerHTML = cartIdStorage.length.toString();
     }
