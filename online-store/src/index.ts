@@ -34,8 +34,12 @@ if (localStorage.getItem('storageObject') === null) {
     startObject = Storage.getStorage();
 }
 
-document.querySelectorAll('input[type=checkbox], .select').forEach((el) => {
+document.querySelectorAll('input[type=checkbox]').forEach((el) => {
     el.addEventListener('click', (event) => renderData(startObject, event));
+});
+
+(document.querySelector('.select') as HTMLElement).addEventListener('change', (event) => {
+    renderData(startObject, event);
 });
 
 const engineSize = document.querySelector('.engineSize') as noUiSlider.target;
