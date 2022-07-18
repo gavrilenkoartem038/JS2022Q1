@@ -3,7 +3,7 @@ import { FinalObj } from '../../types/interface';
 import * as noUiSlider from 'nouislider';
 import Storage from '../storage/storage';
 
-function createData(object: FinalObj, event?: Event) {
+function createData(object: FinalObj, event?: Event): FinalObj {
     const checkboxElements = document.querySelectorAll('input[type=checkbox]');
     const target = event?.target as HTMLInputElement;
     if (Array.from(checkboxElements).includes(target)) {

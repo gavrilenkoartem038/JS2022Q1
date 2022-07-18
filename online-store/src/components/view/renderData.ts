@@ -4,7 +4,7 @@ import Card from './card';
 import Sort from '../filter/sort';
 import { FinalObj } from '../../types/interface';
 
-function renderData(object: FinalObj, event?: Event) {
+function renderData(object: FinalObj, event?: Event): void {
     const select = document.querySelector('.select') as HTMLSelectElement;
     const selectOptions = select.value.split('-');
     const cartIds = JSON.parse(localStorage.getItem('cart') as string) as string[];
@@ -19,7 +19,7 @@ function renderData(object: FinalObj, event?: Event) {
     const finalObj = createData(object, event);
     const cardsContainer = document.querySelector('.cards-container') as HTMLElement;
     cardsContainer.innerHTML = '';
-    data.forEach((car) => {
+    data.forEach((car): void => {
         if (
             finalObj.body.includes(car.body) &&
             finalObj.brand.includes(car.brand) &&

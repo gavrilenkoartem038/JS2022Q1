@@ -29,14 +29,14 @@ class Storage {
         localStorage.setItem('sortOrder', this.select.value);
     }
 
-    public static getStorage() {
+    public static getStorage(): FinalObj {
         const storageObject = JSON.parse(localStorage.getItem('storageObject') as string) as FinalObj;
         this.setSettings(storageObject);
         this.select.value = localStorage.getItem('sortOrder') as string;
         return storageObject;
     }
 
-    public static setSettings(object: FinalObj) {
+    public static setSettings(object: FinalObj): void {
         this.search.value = object.search[0];
         this.clickCheckboxes('brand', object);
         this.clickCheckboxes('body', object);
@@ -48,7 +48,7 @@ class Storage {
         }
     }
 
-    private static clickCheckboxes(name: string, object: FinalObj) {
+    private static clickCheckboxes(name: string, object: FinalObj): void {
         const checkboxElements = document.querySelectorAll<HTMLInputElement>(`input[name=${name}]`);
         checkboxElements.forEach((el): void => {
             if (

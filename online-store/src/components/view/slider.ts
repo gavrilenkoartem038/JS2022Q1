@@ -13,7 +13,7 @@ class Slider {
         this.max = max;
         this.step = step;
     }
-    public drawSlider() {
+    public drawSlider(): void {
         noUiSlider.create(this.sliderName, {
             start: [this.min, this.max],
             connect: true,
