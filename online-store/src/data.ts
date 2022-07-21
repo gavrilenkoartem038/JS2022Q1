@@ -1,4 +1,6 @@
-export default [
+import { Car } from './types/interface';
+
+const carList: Car[] = [
     {
         id: '1',
         popular: true,
@@ -253,3 +255,5 @@ export default [
         price: '43.190',
     },
 ];
+
+export default carList;

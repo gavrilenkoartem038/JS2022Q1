@@ -1,5 +1,6 @@
 function addToCart(e: Event): void {
     const element = e.target as HTMLElement;
+    const parentElement = element.parentElement as HTMLElement;
     const cart = document.querySelector('.cart') as HTMLElement;
     const cartIdStorage =
         localStorage.getItem('cart') !== null ? (JSON.parse(localStorage.getItem('cart') as string) as string[]) : [];
@@ -9,12 +10,12 @@ function addToCart(e: Event): void {
     if (element.classList.contains('cart-button')) {
         if (!cartIdStorage.includes(parentId) && cartIdStorage.length < maxCartLength) {
             cartIdStorage.push(parentId);
-            (element.parentElement as HTMLElement).classList.add('in-cart');
+            parentElement.classList.add('in-cart');
             element.innerHTML = 'In cart';
             element.classList.add('in-cart');
         } else if (cartIdStorage.includes(parentId)) {
             cartIdStorage.splice(cartIdStorage.indexOf(parentId), 1);
-            (element.parentElement as HTMLElement).classList.remove('in-cart');
+            parentElement.classList.remove('in-cart');
             element.innerHTML = 'Add to cart';
             element.classList.remove('in-cart');
         } else {

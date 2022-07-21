@@ -1,13 +1,13 @@
-import Filter from './filter';
 import { FinalObj } from '../../types/interface';
 import * as noUiSlider from 'nouislider';
 import Storage from '../storage/storage';
+import filterCheckboxes from './filterCheckboxes';
 
 function createData(object: FinalObj, event?: Event): FinalObj {
     const checkboxElements = document.querySelectorAll('input[type=checkbox]');
     const target = event?.target as HTMLInputElement;
     if (Array.from(checkboxElements).includes(target)) {
-        (object[target.name as keyof typeof object] as string[]) = Filter.filter(target);
+        (object[target.name as keyof typeof object] as string[]) = filterCheckboxes(target);
     }
 
     const search = document.querySelector('.search') as HTMLInputElement;

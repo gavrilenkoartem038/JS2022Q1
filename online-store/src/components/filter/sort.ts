@@ -1,32 +1,32 @@
 import { Car } from '../../types/interface';
 
 class Sort {
-    public static sortByName(object: Car[], value: string): Car[] {
-        object.sort((a: Car, b: Car) => {
-            if (a.brand + a.model < b.brand + b.model) {
+    public static sortByName(carList: Car[], value: string): Car[] {
+        carList.sort((car1: Car, car2: Car) => {
+            if (car1.brand + car1.model < car2.brand + car2.model) {
                 return -1;
             } else {
                 return 1;
             }
         });
         if (value === 'min') {
-            return object;
+            return carList;
         } else {
-            return object.reverse();
+            return carList.reverse();
         }
     }
-    public static sortByPrice(object: Car[], value: string): Car[] {
-        object.sort((a: Car, b: Car) => {
-            if (a.price < b.price) {
+    public static sortByPrice(carList: Car[], value: string): Car[] {
+        carList.sort((car1: Car, car2: Car) => {
+            if (car1.price < car2.price) {
                 return -1;
             } else {
                 return 1;
             }
         });
         if (value === 'min') {
-            return object;
+            return carList;
         } else {
-            return object.reverse();
+            return carList.reverse();
         }
     }
 }

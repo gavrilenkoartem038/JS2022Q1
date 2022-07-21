@@ -6,14 +6,19 @@ function resetFilter(): void {
     const engineSize = document.querySelector('.engineSize') as noUiSlider.target;
     const price = document.querySelector('.price') as noUiSlider.target;
 
+    const engineSizeMin = 1.4;
+    const engineSizeMax = 4.0;
+    const priceMin = 14.39;
+    const priceMax = 73.49;
+
     checkboxElements.forEach((el): void => {
         if (el.checked) {
             el.click();
         }
     });
     search.value = '';
-    (engineSize.noUiSlider as noUiSlider.API).set([1.4, 4.0]);
-    (price.noUiSlider as noUiSlider.API).set([14.39, 73.49]);
+    (engineSize.noUiSlider as noUiSlider.API).set([engineSizeMin, engineSizeMax]);
+    (price.noUiSlider as noUiSlider.API).set([priceMin, priceMax]);
 }
 
 export default resetFilter;

@@ -7,12 +7,7 @@ class Slider {
         private min: number,
         private max: number,
         private step: number
-    ) {
-        this.sliderName = sliderName;
-        this.min = min;
-        this.max = max;
-        this.step = step;
-    }
+    ) {}
     public drawSlider(): void {
         noUiSlider.create(this.sliderName, {
             start: [this.min, this.max],

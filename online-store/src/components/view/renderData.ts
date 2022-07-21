@@ -1,5 +1,5 @@
 import createData from '../filter/createData';
-import data from '../../data';
+import carList from '../../data';
 import Card from './card';
 import Sort from '../filter/sort';
 import { FinalObj } from '../../types/interface';
@@ -10,16 +10,16 @@ function renderData(object: FinalObj, event?: Event): void {
     const cartIds = JSON.parse(localStorage.getItem('cart') as string) as string[];
 
     if (selectOptions[0] === 'name') {
-        Sort.sortByName(data, selectOptions[1]);
+        Sort.sortByName(carList, selectOptions[1]);
     } else {
-        Sort.sortByPrice(data, selectOptions[1]);
+        Sort.sortByPrice(carList, selectOptions[1]);
     }
 
     let cardsOnPage = 0;
     const finalObj = createData(object, event);
     const cardsContainer = document.querySelector('.cards-container') as HTMLElement;
     cardsContainer.innerHTML = '';
-    data.forEach((car): void => {
+    carList.forEach((car): void => {
         if (
             finalObj.body.includes(car.body) &&
             finalObj.brand.includes(car.brand) &&
