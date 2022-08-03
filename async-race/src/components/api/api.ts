@@ -1,0 +1,76 @@
+import { getRandomNum } from '../../utils';
+import { Settings } from '../const/settings';
+import brandsCars from '../data/brands';
+import modelsCars from '../data/models';
+import { Templatate } from '../template';
+import { Car, Garage, GarageData, Headers, Method, Status } from '../types/types';
+
+const settings = new Settings();
+const temp = new Templatate();
+
+class API {
+  public base = settings.SERVER;
+
+  public garage = `${this.base}garage`;
+
+  public engine = `${this.base}engine`;
+
+  public winners = `${this.base}winners`;
+
+  public getAllCars = async (page: number, limit = settings.GARAGE_ITEMS_PER_PAGE): Promise<GarageData> => {
+    const res = await fetch(`${this.garage}?${temp.page(limit, page)}`);
+    return {
+      garage: await res.json(),
+      total: parseInt(<string>res.headers.get(Headers.TOTAL_COUNT), 10),
+    };
+  };
+
+  public getCar = async (id: number): Promise<Car> => {
+    return (await fetch(`${this.garage}/${id}`)).json();
+  };
+
+  public deleteCar = async (id: number): Promise<void> => {
+    await fetch(`${this.garage}/${id}`, { method: Method.DELETE });
+    if ((await fetch(`${this.winners}/${id}`)).status !== Status.NOT_FOUND) {
+      await fetch(`${this.winners}/${id}`, { method: Method.DELETE });
+    }
+  };
+
+  public createCar = async (body: Car): Promise<Car> => {
+    return (
+      await fetch(`${this.garage}`, {
+        method: Method.POST,
+        headers: { [Headers.CONTENT_TYPE]: 'application/json' },
+        body: JSON.stringify(body),
+      })
+    ).json();
+  };
+
+  public updateCar = async (id: number, body: Car): Promise<Car> => {
+    return (
+      await fetch(`${this.garage}/${id}`, {
+        method: Method.PUT,
+        headers: { [Headers.CONTENT_TYPE]: 'application/json' },
+        body: JSON.stringify(body),
+      })
+    ).json();
+  };
+
+  public generateCars = async (n: number = settings.DEFAULT_CREATE_VALUE): Promise<Garage> => {
+    const result: Garage = await Promise.all(
+      new Array(n).fill(undefined).map(async () => {
+        const car: Car = await this.createCar({
+          name: `${brandsCars[getRandomNum(brandsCars.length)]} ${modelsCars[getRandomNum(modelsCars.length)]}`,
+          color: `rgb(${getRandomNum(settings.MAX_RGB_VALUE)},
+          ${getRandomNum(settings.MAX_RGB_VALUE)},
+          ${getRandomNum(settings.MAX_RGB_VALUE)})`,
+        });
+        return car;
+        // eslint-disable-next-line @typescript-eslint/comma-dangle
+      })
+    );
+    return result;
+  };
+}
+
+export default API;

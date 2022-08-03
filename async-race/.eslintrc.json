@@ -5,7 +5,7 @@
         "prettier",
         "eslint:recommended",
         "plugin:@typescript-eslint/recommended",
-        "plugin:@typescript-eslint/recommended-requiring-type-checking"
+        "airbnb-typescript/base"
     ],
     "parser": "@typescript-eslint/parser",
     "parserOptions": {
@@ -16,8 +16,7 @@
     "env": {
         "es6": true,
         "browser": true,
-        "node": true, 
-        "jest": true
+        "node": true
     },
     "rules": {
         "no-debugger": "off",
@@ -25,8 +24,6 @@
         "class-methods-use-this": "off",
         "@typescript-eslint/no-explicit-any": 2,
         "@typescript-eslint/explicit-member-accessibility": "error",
-        "@typescript-eslint/no-unsafe-member-access": 0,
-        "@typescript-eslint/no-unsafe-call": 0,
         "curly": "error", 
         "prefer-const": "error",
         "linebreak-style": ["error", "unix"]
