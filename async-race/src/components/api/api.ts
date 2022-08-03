@@ -3,7 +3,7 @@ import { Settings } from '../const/settings';
 import brandsCars from '../data/brands';
 import modelsCars from '../data/models';
 import { Templatate } from '../template';
-import { Car, Garage, GarageData, Headers, Method, Status } from '../types/types';
+import { Car, Drive, Engine, EngineStatus, Garage, GarageData, Headers, Method, Status } from '../types/types';
 
 const settings = new Settings();
 const temp = new Templatate();
@@ -70,6 +70,28 @@ class API {
       })
     );
     return result;
+  };
+
+  public startEngine = async (id: number): Promise<Engine> => {
+    return (
+      await fetch(`${this.engine}?${temp.id(id)}&${temp.status(EngineStatus.START)}`, { method: Method.PATCH })
+    ).json();
+  };
+
+  public stopEngine = async (id: number): Promise<Engine> => {
+    return (
+      await fetch(`${this.engine}?${temp.id(id)}&${temp.status(EngineStatus.STOP)}`, { method: Method.PATCH })
+    ).json();
+  };
+
+  public drive = async (id: number): Promise<Drive> => {
+    const res = await fetch(`${this.engine}?${temp.id(id)}&${temp.status(EngineStatus.DRIVE)}`, {
+      method: Method.PATCH,
+    }).catch();
+    if (res.status === Status.OK) {
+      return { ...(await res.json()) };
+    }
+    return { success: false };
   };
 }
 

@@ -32,3 +32,18 @@ export interface GarageData {
   garage: Garage;
   total: number;
 }
+
+export interface Engine {
+  velocity: number;
+  distance: number;
+}
+
+export enum EngineStatus {
+  STOP = 'stopped',
+  START = 'started',
+  DRIVE = 'drive',
+}
+
+export interface Drive {
+  success: boolean;
+}
