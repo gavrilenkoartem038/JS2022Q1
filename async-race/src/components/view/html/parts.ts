@@ -10,7 +10,7 @@ class HTMLParts {
       <div class="update">
         <input type="text" class="update-name">
         <input type="color" class="update-color">
-        <button class="update-car">Update car</button>
+        <button class="update-car" disabled>Update car</button>
       </div>
       <div class="race-all">
         <button class="start-race">Start race</button>

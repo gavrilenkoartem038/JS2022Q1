@@ -1,4 +1,4 @@
-import { getRandomNum } from '../utils';
+import { getRandomColor, getRandomNum } from '../utils';
 import { Settings } from '../const/settings';
 import brandsCars from '../data/brands';
 import modelsCars from '../data/models';
@@ -61,9 +61,7 @@ class API {
       new Array(n).fill(undefined).map(async () => {
         const car: Car = await this.createCar({
           name: `${brandsCars[getRandomNum(brandsCars.length)]} ${modelsCars[getRandomNum(modelsCars.length)]}`,
-          color: `rgb(${getRandomNum(settings.MAX_RGB_VALUE)},
-          ${getRandomNum(settings.MAX_RGB_VALUE)},
-          ${getRandomNum(settings.MAX_RGB_VALUE)})`,
+          color: `#${getRandomColor(settings.MAX_RGB_VALUE)}`,
         });
         return car;
         // eslint-disable-next-line @typescript-eslint/comma-dangle

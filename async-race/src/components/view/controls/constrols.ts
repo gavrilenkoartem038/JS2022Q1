@@ -65,8 +65,26 @@ class Controls {
 
   public deleteCar: EventCallback = async (e: Event): Promise<void> => {
     const id: number = parseInt(<string>(e.target as HTMLElement).dataset.id, 10);
-    console.log(id);
     await api.deleteCar(id);
+    this.loadGarage();
+  };
+
+  public selectCar: EventCallback = async (e: Event): Promise<void> => {
+    const id: number = parseInt(<string>(e.target as HTMLElement).dataset.id, 10);
+    const response = await api.getCar(id);
+    (document.querySelector('.update-name') as HTMLInputElement).value = response.name;
+    (document.querySelector('.update-color') as HTMLInputElement).value = response.color;
+    (document.querySelector('.update-car') as HTMLButtonElement).disabled = false;
+    session.selectedCarId = id;
+  };
+
+  public updateCar: Callback = async (): Promise<void> => {
+    const id: number = session.selectedCarId;
+    const name: string = (document.querySelector('.update-name') as HTMLInputElement).value;
+    const color: string = (document.querySelector('.update-color') as HTMLInputElement).value;
+    await api.updateCar(id, { name, color });
+    session.selectedCarId = 0;
+    (document.querySelector('.update-car') as HTMLButtonElement).disabled = true;
     this.loadGarage();
   };
 }

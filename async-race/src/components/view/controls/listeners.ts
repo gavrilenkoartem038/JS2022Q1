@@ -11,6 +11,8 @@ class Listeners {
     document.addEventListener('click', (e: Event) => callbackBuilder(controls.generateCars, 'generate-cars', e));
     document.addEventListener('click', (e: Event) => callbackBuilder(controls.nextGarage, 'next-garage', e));
     document.addEventListener('click', (e: Event) => callbackBuilder(controls.prevGarage, 'prev-garage', e));
+    document.addEventListener('click', (e: Event) => callbackBuilder(controls.selectCar, 'select', e));
+    document.addEventListener('click', (e: Event) => callbackBuilder(controls.updateCar, 'update-car', e));
   };
 }
 

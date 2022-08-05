@@ -8,6 +8,8 @@ class Session {
   public garageMaxPage: number = settings.DEFAULT_INIT_VALUE;
 
   public currentGarage: number[] = [];
+
+  public selectedCarId = 0;
 }
 
 export default Session;
