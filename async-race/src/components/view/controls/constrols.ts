@@ -17,11 +17,15 @@ class Controls {
     const itemCounter = document.querySelector('.cars-count') as HTMLElement;
     const currentPage = document.querySelector('.garage-cur') as HTMLElement;
     const totalPages = document.querySelector('.garage-tot') as HTMLElement;
-    const response = await api.getAllCars(settings.DEFAULT_INIT_VALUE);
+    const prevPage = document.querySelector('.prev-garage') as HTMLButtonElement;
+    const nextPage = document.querySelector('.next-garage') as HTMLButtonElement;
+    const response = await api.getAllCars(session.garagePageNumber);
     if (response) {
       const { garage: items, total } = response;
       session.currentGarage = items.map((car: Car): number => <number>car.id);
       session.garageMaxPage = Math.ceil(total / settings.GARAGE_ITEMS_PER_PAGE) || settings.DEFAULT_INIT_VALUE;
+      prevPage.disabled = session.garagePageNumber < 2;
+      nextPage.disabled = session.garagePageNumber >= session.garageMaxPage;
       currentPage.innerHTML = `${session.garagePageNumber}`;
       totalPages.innerHTML = `${session.garageMaxPage}`;
       itemCounter.innerHTML = `${total}`;
@@ -41,6 +45,21 @@ class Controls {
     const name: string = (document.querySelector('.create-name') as HTMLInputElement).value;
     const color: string = (document.querySelector('.create-color') as HTMLInputElement).value;
     await api.createCar({ name, color });
+    this.loadGarage();
+  };
+
+  public generateCars: Callback = async (): Promise<void> => {
+    await api.generateCars(settings.DEFAULT_ITEMS_PER_GENERATION);
+    this.loadGarage();
+  };
+
+  public nextGarage: Callback = async (): Promise<void> => {
+    session.garagePageNumber += 1;
+    this.loadGarage();
+  };
+
+  public prevGarage: Callback = async (): Promise<void> => {
+    session.garagePageNumber -= 1;
     this.loadGarage();
   };
 

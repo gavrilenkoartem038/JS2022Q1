@@ -5,5 +5,7 @@ export class Settings {
 
   public DEFAULT_INIT_VALUE = 1;
 
+  public DEFAULT_ITEMS_PER_GENERATION = 100;
+
   public MAX_RGB_VALUE = 256;
 }
