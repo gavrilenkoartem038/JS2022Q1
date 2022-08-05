@@ -3,7 +3,7 @@ export class Settings {
 
   public GARAGE_ITEMS_PER_PAGE = 7;
 
-  public DEFAULT_CREATE_VALUE = 1;
+  public DEFAULT_INIT_VALUE = 1;
 
   public MAX_RGB_VALUE = 256;
 }

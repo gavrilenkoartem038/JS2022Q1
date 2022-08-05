@@ -45,14 +45,14 @@ const baseConfig = {
     new CleanWebpackPlugin(),
     new EslingPlugin({ extensions: 'ts' }),
     new miniCssExtractPlugin({ filename: 'style.css' }),
-    new CopyPlugin({
-      patterns: [
-        {
-          from: path.resolve(__dirname, 'src/assets/images'),
-          to: path.resolve(__dirname, 'dist/assets/images'),
-        },
-      ],
-    }),
+    // new CopyPlugin({
+    //   patterns: [
+    //     {
+    //       from: path.resolve(__dirname, 'src/assets/images'),
+    //       to: path.resolve(__dirname, 'dist/assets/images'),
+    //     },
+    //   ],
+    // }),
   ],
 };
 

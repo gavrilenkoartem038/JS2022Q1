@@ -47,3 +47,5 @@ export enum EngineStatus {
 export interface Drive {
   success: boolean;
 }
+
+export type Callback = () => void;

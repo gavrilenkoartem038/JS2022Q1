@@ -1,9 +1,9 @@
-import { getRandomNum } from '../../utils';
+import { getRandomNum } from '../utils';
 import { Settings } from '../const/settings';
 import brandsCars from '../data/brands';
 import modelsCars from '../data/models';
-import { Templatate } from '../template';
-import { Car, Drive, Engine, EngineStatus, Garage, GarageData, Headers, Method, Status } from '../types/types';
+import { Templatate } from './template';
+import { Car, Drive, Engine, EngineStatus, Garage, GarageData, Headers, Method, Status } from '../types';
 
 const settings = new Settings();
 const temp = new Templatate();
@@ -56,7 +56,7 @@ class API {
     ).json();
   };
 
-  public generateCars = async (n: number = settings.DEFAULT_CREATE_VALUE): Promise<Garage> => {
+  public generateCars = async (n: number = settings.DEFAULT_INIT_VALUE): Promise<Garage> => {
     const result: Garage = await Promise.all(
       new Array(n).fill(undefined).map(async () => {
         const car: Car = await this.createCar({

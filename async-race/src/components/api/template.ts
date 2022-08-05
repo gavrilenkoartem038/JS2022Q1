@@ -1,4 +1,4 @@
-import { EngineStatus } from './types/types';
+import { EngineStatus } from '../types';
 
 export class Templatate {
   public page = (limit: number, index: number): string => {
