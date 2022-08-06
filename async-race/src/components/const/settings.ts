@@ -9,7 +9,7 @@ export class Settings {
 
   public MAX_RGB_VALUE = 256;
 
-  public ANIMATION_DURATION_COEFFICIENT = 1000;
+  public ANIMATION_COEFFICIENT = 1000;
 
   public RACE_TIME_ORDER = 2;
 }

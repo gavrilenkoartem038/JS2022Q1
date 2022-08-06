@@ -51,3 +51,8 @@ export interface Drive {
 export type Callback = () => void;
 
 export type EventCallback = (e: Event) => void;
+
+export interface RaceCar {
+  id: number;
+  time: number;
+}

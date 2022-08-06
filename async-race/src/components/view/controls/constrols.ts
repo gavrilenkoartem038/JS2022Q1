@@ -1,7 +1,8 @@
+/* eslint-disable @typescript-eslint/comma-dangle */
 import API from '../../api/api';
 import Session from '../../const/session';
 import { Settings } from '../../const/settings';
-import { Callback, Car, EventCallback } from '../../types';
+import { Callback, Car, Engine, EventCallback, RaceCar } from '../../types';
 import Initial from '../html/initial';
 import HTMLParts from '../html/parts';
 
@@ -92,7 +93,7 @@ class Controls {
     const id: number = parseInt(<string>(e.target as HTMLElement).dataset.id, 10);
     const car = document.querySelector(`.road[data-id='${id}'] .car`) as HTMLElement;
     const { velocity, distance } = await api.startEngine(id);
-    const time = (distance / velocity / settings.ANIMATION_DURATION_COEFFICIENT).toFixed(settings.RACE_TIME_ORDER);
+    const time = (distance / velocity / settings.ANIMATION_COEFFICIENT).toFixed(settings.RACE_TIME_ORDER);
     console.log(time);
     (<HTMLButtonElement>e.target).disabled = true;
     (<HTMLButtonElement>document.querySelector(`.stop[data-id='${id}']`)).disabled = false;
@@ -111,6 +112,51 @@ class Controls {
     (<HTMLButtonElement>e.target).disabled = true;
     (<HTMLButtonElement>document.querySelector(`.start[data-id='${id}']`)).disabled = false;
     await api.stopEngine(id);
+  };
+
+  public getCarRaceInfo = async (id: number): Promise<RaceCar> => {
+    const { velocity, distance } = await api.startEngine(id);
+    return {
+      id,
+      time: parseFloat((distance / velocity / settings.ANIMATION_COEFFICIENT).toFixed(settings.RACE_TIME_ORDER)),
+    };
+  };
+
+  public getWinner = async (raceCar: RaceCar): Promise<RaceCar> => {
+    const { id, time } = raceCar;
+    const car = document.querySelector(`.road[data-id='${id}'] .car`) as HTMLElement;
+    (<HTMLButtonElement>document.querySelector(`.stop[data-id='${id}']`)).disabled = false;
+    (<HTMLButtonElement>document.querySelector(`.start[data-id='${id}']`)).disabled = true;
+    car.style.animationDuration = `${time}s`;
+    car.classList.add('drive');
+    const { success } = await api.drive(id);
+    if (!success) {
+      car.classList.add('crash');
+      throw new Error('car crached');
+    }
+    return { id, time };
+  };
+
+  public startRace: Callback = async (): Promise<void> => {
+    const garage = session.currentGarage;
+    await Promise.all(
+      garage.map(
+        async (id: number): Promise<Engine> => {
+          const resp = await api.stopEngine(id);
+          return resp;
+        }
+      )
+    );
+    document.querySelectorAll('.race-container').forEach((value: Element): void => {
+      (<HTMLButtonElement>value.querySelector('.start')).disabled = false;
+      (<HTMLButtonElement>value.querySelector('.stop')).disabled = true;
+      value.querySelector('.car')?.classList.remove('drive', 'crash');
+    });
+    const cars: RaceCar[] = await Promise.all(garage.map(this.getCarRaceInfo));
+    const winner: RaceCar | void = await Promise.any(cars.map(this.getWinner)).catch(() => {
+      console.log('all cars crashed');
+    });
+    console.log(winner);
   };
 }
 export default Controls;
