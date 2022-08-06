@@ -1,3 +1,21 @@
+@keyframes race {
+  0% {
+    margin-left: 0;
+  }
+
+  to {
+    margin-left: calc(100% - 100px);
+  }
+}
+
 .road {
   border-bottom: 2px black dashed;
+}
+
+.car.drive {
+  animation: 9999s ease-in race forwards;
+}
+
+.car.drive.crash {
+  animation-play-state: paused;
 }

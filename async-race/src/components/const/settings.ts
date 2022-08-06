@@ -8,4 +8,8 @@ export class Settings {
   public DEFAULT_ITEMS_PER_GENERATION = 100;
 
   public MAX_RGB_VALUE = 256;
+
+  public ANIMATION_DURATION_COEFFICIENT = 1000;
+
+  public RACE_TIME_ORDER = 2;
 }

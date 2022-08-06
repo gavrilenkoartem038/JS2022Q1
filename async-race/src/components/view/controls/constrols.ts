@@ -87,5 +87,30 @@ class Controls {
     (document.querySelector('.update-car') as HTMLButtonElement).disabled = true;
     this.loadGarage();
   };
+
+  public driveCar: EventCallback = async (e: Event): Promise<void> => {
+    const id: number = parseInt(<string>(e.target as HTMLElement).dataset.id, 10);
+    const car = document.querySelector(`.road[data-id='${id}'] .car`) as HTMLElement;
+    const { velocity, distance } = await api.startEngine(id);
+    const time = (distance / velocity / settings.ANIMATION_DURATION_COEFFICIENT).toFixed(settings.RACE_TIME_ORDER);
+    console.log(time);
+    (<HTMLButtonElement>e.target).disabled = true;
+    (<HTMLButtonElement>document.querySelector(`.stop[data-id='${id}']`)).disabled = false;
+    car.style.animationDuration = `${time}s`;
+    car.classList.add('drive');
+    const { success } = await api.drive(id);
+    if (!success) {
+      car.classList.add('crash');
+    }
+  };
+
+  public stopCar: EventCallback = async (e: Event): Promise<void> => {
+    const id: number = parseInt(<string>(e.target as HTMLElement).dataset.id, 10);
+    const car = document.querySelector(`.road[data-id='${id}'] .car`) as HTMLElement;
+    car.classList.remove('drive', 'crash');
+    (<HTMLButtonElement>e.target).disabled = true;
+    (<HTMLButtonElement>document.querySelector(`.start[data-id='${id}']`)).disabled = false;
+    await api.stopEngine(id);
+  };
 }
 export default Controls;
