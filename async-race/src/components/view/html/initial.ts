@@ -4,7 +4,7 @@ const parts = new HTMLParts();
 
 class Initial {
   public template = (): string => {
-    return `${parts.header()}${parts.main()}${parts.footer()}`;
+    return `${parts.header()}${parts.main()}${parts.winners()}${parts.footer()}`;
   };
 }
 

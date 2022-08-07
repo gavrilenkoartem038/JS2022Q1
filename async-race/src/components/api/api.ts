@@ -3,7 +3,19 @@ import { Settings } from '../const/settings';
 import brandsCars from '../data/brands';
 import modelsCars from '../data/models';
 import { Templatate } from './template';
-import { Car, Drive, Engine, EngineStatus, Garage, GarageData, Headers, Method, Status } from '../types';
+import {
+  Car,
+  Drive,
+  Engine,
+  EngineStatus,
+  Garage,
+  GarageData,
+  Headers,
+  Method,
+  Status,
+  Winner,
+  WinnersData,
+} from '../types';
 
 const settings = new Settings();
 const temp = new Templatate();
@@ -90,6 +102,56 @@ class API {
       return { ...(await res.json()) };
     }
     return { success: false };
+  };
+
+  public getWinner = async (id: number): Promise<Winner> => {
+    return (await fetch(`${this.winners}/${id}`)).json();
+  };
+
+  public createWinner = async (body: Winner): Promise<Winner> => {
+    return (
+      await fetch(`${this.winners}`, {
+        method: Method.POST,
+        headers: { [Headers.CONTENT_TYPE]: 'application/json' },
+        body: JSON.stringify(body),
+      })
+    ).json();
+  };
+
+  public updateWinner = async (body: Winner): Promise<Winner> => {
+    return (
+      await fetch(`${this.winners}/${body.id}`, {
+        method: Method.PUT,
+        headers: { [Headers.CONTENT_TYPE]: 'application/json' },
+        body: JSON.stringify(body),
+      })
+    ).json();
+  };
+
+  public saveWinner = async (id: number, time: number): Promise<void> => {
+    if ((await fetch(`${this.winners}/${id}`)).status === Status.OK) {
+      const winner = await this.getWinner(id);
+      console.log(winner, 'ddddddd');
+      await this.updateWinner({
+        id,
+        wins: (winner.wins += 1),
+        time: time < winner.time ? time : winner.time,
+      });
+    } else {
+      await this.createWinner({
+        id,
+        wins: 1,
+        time: time,
+      });
+    }
+  };
+
+  public getAllWinners = async (page: number, limit = settings.GARAGE_ITEMS_PER_PAGE): Promise<WinnersData> => {
+    const res = await fetch(`${this.winners}?${temp.page(limit, page)}`);
+    return {
+      winners: await res.json(),
+      total: parseInt(<string>res.headers.get(Headers.TOTAL_COUNT), 10),
+    };
   };
 }
 

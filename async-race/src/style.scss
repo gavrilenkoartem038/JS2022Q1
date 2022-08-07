@@ -19,3 +19,13 @@
 .car.drive.crash {
   animation-play-state: paused;
 }
+
+.main {
+  position: relative;
+  .message {
+    position: absolute;
+    top: 50%;
+    left: calc(50% - 100px);
+    visibility: hidden;
+  }
+}

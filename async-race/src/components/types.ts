@@ -56,3 +56,16 @@ export interface RaceCar {
   id: number;
   time: number;
 }
+
+export interface Winner {
+  id: number;
+  wins: number;
+  time: number;
+}
+
+export type Winners = Winner[];
+
+export interface WinnersData {
+  winners: Winners;
+  total: number;
+}

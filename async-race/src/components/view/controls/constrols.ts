@@ -94,7 +94,6 @@ class Controls {
     const car = document.querySelector(`.road[data-id='${id}'] .car`) as HTMLElement;
     const { velocity, distance } = await api.startEngine(id);
     const time = (distance / velocity / settings.ANIMATION_COEFFICIENT).toFixed(settings.RACE_TIME_ORDER);
-    console.log(time);
     (<HTMLButtonElement>e.target).disabled = true;
     (<HTMLButtonElement>document.querySelector(`.stop[data-id='${id}']`)).disabled = false;
     car.style.animationDuration = `${time}s`;
@@ -138,6 +137,25 @@ class Controls {
   };
 
   public startRace: Callback = async (): Promise<void> => {
+    this.resetRace();
+    const garage = session.currentGarage;
+    const cars: RaceCar[] = await Promise.all(garage.map(this.getCarRaceInfo));
+    const winner: RaceCar | void = await Promise.any(cars.map(this.getWinner)).catch(() => {
+      console.log('all cars crashed');
+    });
+    if (typeof winner === 'object') {
+      await api.saveWinner(winner.id, winner.time);
+      const { name } = await api.getCar(winner.id);
+      const message = <HTMLElement>document.querySelector('.message');
+      message.innerHTML = `Last winner ${name} (${winner.time}s)`;
+      message.style.visibility = 'visible';
+      setTimeout(() => (message.style.visibility = 'hidden'), 3000);
+    }
+    const response = await api.getAllWinners(1);
+    console.log(response);
+  };
+
+  public resetRace: Callback = async (): Promise<void> => {
     const garage = session.currentGarage;
     await Promise.all(
       garage.map(
@@ -152,11 +170,6 @@ class Controls {
       (<HTMLButtonElement>value.querySelector('.stop')).disabled = true;
       value.querySelector('.car')?.classList.remove('drive', 'crash');
     });
-    const cars: RaceCar[] = await Promise.all(garage.map(this.getCarRaceInfo));
-    const winner: RaceCar | void = await Promise.any(cars.map(this.getWinner)).catch(() => {
-      console.log('all cars crashed');
-    });
-    console.log(winner);
   };
 }
 export default Controls;
