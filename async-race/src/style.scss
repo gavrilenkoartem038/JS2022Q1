@@ -8,7 +8,7 @@
   }
 }
 
-@mixin flex ($flex-dir: raw, $gap: 10px, $align-items: stretch, $justify: flex-start) {
+@mixin flex ($flex-dir: row, $gap: 10px, $align-items: stretch, $justify: flex-start) {
   display: flex;
   flex-direction: $flex-dir;
   gap: $gap;
