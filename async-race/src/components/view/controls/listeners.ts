@@ -17,6 +17,10 @@ class Listeners {
     document.addEventListener('click', (e: Event) => callbackBuilder(controls.stopCar, 'stop', e));
     document.addEventListener('click', (e: Event) => callbackBuilder(controls.startRace, 'start-race', e));
     document.addEventListener('click', (e: Event) => callbackBuilder(controls.resetRace, 'reset-race', e));
+    document.addEventListener('click', (e: Event) => callbackBuilder(controls.nextWinners, 'next-winners', e));
+    document.addEventListener('click', (e: Event) => callbackBuilder(controls.prevWinners, 'prev-winners', e));
+    document.addEventListener('click', (e: Event) => callbackBuilder(controls.showWinners, 'winners-btn', e));
+    document.addEventListener('click', (e: Event) => callbackBuilder(controls.showGarage, 'garage-btn', e));
   };
 }
 

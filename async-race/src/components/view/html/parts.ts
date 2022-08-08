@@ -1,6 +1,7 @@
 class HTMLParts {
   public header = (): string => {
     return `<header class="header">
+    <button class="winners-btn">Winners page</button>
     <div class="controls">
       <div class="create">
         <input type="text" class="create-name">
@@ -18,7 +19,6 @@ class HTMLParts {
         <button class="generate-cars">Generate</button>
       </div>
     </div>
-    <button class="winners-btn">Winners page</button>
   </header>`;
   };
 
@@ -79,10 +79,11 @@ class HTMLParts {
 
   public winners = (): string => {
     return `<div class="winners-page">
+    <button class="garage-btn">Garage-page</button>
     <div class="winners-info">
       <h2 class="winners-title">Winners
         <span>(</span> 
-        <span class="cars-count">?</span>
+        <span class="winners-count">?</span>
         <span>)</span>
       </h2>
       <div class="winners-controls">
@@ -95,7 +96,17 @@ class HTMLParts {
         <button class="next-winners">></button>
       </div>
     </div>
-    <div class="winners"></div>
+    <div class="winners">
+      <table>
+        <tr>
+          <th>Number</th>
+          <th>Car</th>
+          <th>Name</th>
+          <th>Wins</th>
+          <th>Time(seconds)</th>
+        </tr>
+      </table>
+    </div>
   </div>`;
   };
 }

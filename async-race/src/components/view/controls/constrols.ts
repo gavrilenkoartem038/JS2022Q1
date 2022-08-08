@@ -2,7 +2,7 @@
 import API from '../../api/api';
 import Session from '../../const/session';
 import { Settings } from '../../const/settings';
-import { Callback, Car, Engine, EventCallback, RaceCar } from '../../types';
+import { Callback, Car, Engine, EventCallback, RaceCar, Winner } from '../../types';
 import Initial from '../html/initial';
 import HTMLParts from '../html/parts';
 
@@ -37,9 +37,33 @@ class Controls {
     }
   };
 
+  public loadWinners: Callback = async (): Promise<void> => {
+    const container = document.querySelector('.winners') as HTMLElement;
+    const itemCounter = document.querySelector('.winners-count') as HTMLElement;
+    const currentPage = document.querySelector('.winners-cur') as HTMLElement;
+    const totalPages = document.querySelector('.winners-tot') as HTMLElement;
+    const prevPage = document.querySelector('.prev-winners') as HTMLButtonElement;
+    const nextPage = document.querySelector('.next-winners') as HTMLButtonElement;
+    const response = await api.getAllWinners(session.winnersPageNumber);
+    if (response) {
+      const { winners: items, total } = response;
+      session.winnersMaxPage = Math.ceil(total / settings.WINNERS_ITEMS_PER_PAGE) || settings.DEFAULT_INIT_VALUE;
+      prevPage.disabled = session.winnersPageNumber < 2;
+      nextPage.disabled = session.winnersPageNumber >= session.winnersMaxPage;
+      currentPage.innerHTML = `${session.winnersPageNumber}`;
+      totalPages.innerHTML = `${session.winnersMaxPage}`;
+      itemCounter.innerHTML = `${total}`;
+      container.innerHTML = '';
+      items.forEach((car: Winner): void => {
+        container.innerHTML += car.wins;
+      });
+    }
+  };
+
   public initPage: Callback = async (): Promise<void> => {
     document.body.innerHTML += initialHtml.template();
     this.loadGarage();
+    this.loadWinners();
   };
 
   public createCar: Callback = async (): Promise<void> => {
@@ -137,7 +161,7 @@ class Controls {
   };
 
   public startRace: Callback = async (): Promise<void> => {
-    this.resetRace();
+    await this.resetRace();
     const garage = session.currentGarage;
     const cars: RaceCar[] = await Promise.all(garage.map(this.getCarRaceInfo));
     const winner: RaceCar | void = await Promise.any(cars.map(this.getWinner)).catch(() => {
@@ -150,9 +174,8 @@ class Controls {
       message.innerHTML = `Last winner ${name} (${winner.time}s)`;
       message.style.visibility = 'visible';
       setTimeout(() => (message.style.visibility = 'hidden'), 3000);
+      this.loadWinners();
     }
-    const response = await api.getAllWinners(1);
-    console.log(response);
   };
 
   public resetRace: Callback = async (): Promise<void> => {
@@ -170,6 +193,28 @@ class Controls {
       (<HTMLButtonElement>value.querySelector('.stop')).disabled = true;
       value.querySelector('.car')?.classList.remove('drive', 'crash');
     });
+  };
+
+  public nextWinners: Callback = async (): Promise<void> => {
+    session.winnersPageNumber += 1;
+    this.loadWinners();
+  };
+
+  public prevWinners: Callback = async (): Promise<void> => {
+    session.winnersPageNumber -= 1;
+    this.loadWinners();
+  };
+
+  public showWinners: Callback = async (): Promise<void> => {
+    (<HTMLElement>document.querySelector('.winners-page')).style.visibility = 'visible';
+    (<HTMLElement>document.querySelector('.header')).style.visibility = 'hidden';
+    (<HTMLElement>document.querySelector('.main')).style.visibility = 'hidden';
+  };
+
+  public showGarage: Callback = async (): Promise<void> => {
+    (<HTMLElement>document.querySelector('.winners-page')).style.visibility = 'hidden';
+    (<HTMLElement>document.querySelector('.header')).style.visibility = 'visible';
+    (<HTMLElement>document.querySelector('.main')).style.visibility = 'visible';
   };
 }
 export default Controls;

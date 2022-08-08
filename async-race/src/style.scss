@@ -8,6 +8,10 @@
   }
 }
 
+body {
+  position: relative;
+}
+
 .road {
   border-bottom: 2px black dashed;
 }
@@ -28,4 +32,12 @@
     left: calc(50% - 100px);
     visibility: hidden;
   }
+}
+
+.winners-page {
+  position: absolute;
+  width: 100%;
+  top: 0;
+  height: 100%;
+  visibility: hidden;
 }

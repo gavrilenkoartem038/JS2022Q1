@@ -3,6 +3,8 @@ export class Settings {
 
   public GARAGE_ITEMS_PER_PAGE = 7;
 
+  public WINNERS_ITEMS_PER_PAGE = 10;
+
   public DEFAULT_INIT_VALUE = 1;
 
   public DEFAULT_ITEMS_PER_GENERATION = 100;
