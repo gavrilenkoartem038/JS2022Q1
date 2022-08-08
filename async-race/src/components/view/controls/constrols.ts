@@ -52,7 +52,6 @@ class Controls {
     );
     if (response) {
       const { winners: items, total } = response;
-      console.log(items);
       session.winnersMaxPage = Math.ceil(total / settings.WINNERS_ITEMS_PER_PAGE) || settings.DEFAULT_INIT_VALUE;
       prevPage.disabled = session.winnersPageNumber < 2;
       nextPage.disabled = session.winnersPageNumber >= session.winnersMaxPage;
@@ -109,7 +108,9 @@ class Controls {
   public selectCar: EventCallback = async (e: Event): Promise<void> => {
     const id: number = parseInt(<string>(e.target as HTMLElement).dataset.id, 10);
     const response = await api.getCar(id);
-    (document.querySelector('.update-name') as HTMLInputElement).value = response.name;
+    const updateInput = document.querySelector('.update-name') as HTMLInputElement;
+    updateInput.focus();
+    updateInput.value = response.name;
     (document.querySelector('.update-color') as HTMLInputElement).value = response.color;
     (document.querySelector('.update-car') as HTMLButtonElement).disabled = false;
     session.selectedCarId = id;
@@ -183,7 +184,7 @@ class Controls {
       await api.saveWinner(winner.id, winner.time);
       const { name } = await api.getCar(winner.id);
       const message = <HTMLElement>document.querySelector('.message');
-      message.innerHTML = `Last winner ${name} (${winner.time}s)`;
+      message.innerHTML = `Winner ${name} (${winner.time}s)`;
       message.style.visibility = 'visible';
       setTimeout(() => (message.style.visibility = 'hidden'), 3000);
       this.loadWinners();

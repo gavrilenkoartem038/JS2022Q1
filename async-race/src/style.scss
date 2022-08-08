@@ -8,12 +8,101 @@
   }
 }
 
-body {
-  position: relative;
+@mixin flex ($flex-dir: raw, $gap: 10px, $align-items: stretch, $justify: flex-start) {
+  display: flex;
+  flex-direction: $flex-dir;
+  gap: $gap;
+  align-items: $align-items;
+  justify-content: $justify;
 }
 
-.road {
-  border-bottom: 2px black dashed;
+$color-red: #c0392b;
+$color-active: #01b93e;
+$font: 'Roboto', sans-serif;
+
+h2 {
+  margin: 0;
+}
+
+body {
+  @include flex($flex-dir: column, $justify: space-between);
+  min-height: 100vh;
+  position: relative;
+  margin: 0;
+  background-color: rgb(228, 228, 228);
+  font-family: $font;
+}
+
+.header, .footer, .winners-header {
+  background-color: black;
+  padding: 10px 20px;
+  color: white;
+}
+
+.main, .winners-main {
+  @include flex(column, 10px);
+  padding: 10px 20px;
+  .garage-info, .winners-info {
+    @include flex(column, 10px);
+  }
+}
+
+.header {
+  @include flex(column, 10px, flex-start);
+  gap: 10px;
+  .controls {
+    @include flex(column, 10px);
+  }
+}
+
+input,
+button {
+  box-sizing: border-box;
+  height: 20px;
+  background: #fff;
+  border: 0;
+  outline: none;
+  margin: 0;
+  border-radius: 3px;
+  font-family: $font;
+}
+
+button {
+  cursor: pointer;
+}
+
+input:focus, button:hover {
+  box-shadow: 0 0 10px #fff;
+}
+
+.start, .stop {
+  border: 2px solid $color-active;  
+  &:disabled {
+    border-color: #707070;
+  }
+  &:hover {
+    box-shadow: 0 0 5px #000;
+  }
+  &:active {
+    background-color: rgb(228, 228, 228);
+  }  
+}
+
+.next-garage, .prev-garage, .next-winners, .prev-winners, .select, .delete {
+  border: 2px solid black;  
+  &:disabled {
+    border-color: #b6b6b6;
+  }
+  &:hover {
+    box-shadow: 0 0 5px #000;
+  }
+  &:active {
+    background-color: rgb(228, 228, 228);
+  }  
+}
+
+.stop {
+  border: 2px solid $color-red;
 }
 
 .car.drive {
@@ -26,11 +115,17 @@ body {
 
 .main {
   position: relative;
+  margin-bottom: auto;
   .message {
     position: absolute;
     top: 50%;
-    left: calc(50% - 100px);
+    left: calc(50% - 120px);
     visibility: hidden;
+    padding: 10px 10px;
+    font-size: 24px;
+    font-weight: bold;
+    color: red;
+    background-color: #000;
   }
 }
 
@@ -40,4 +135,62 @@ body {
   top: 0;
   height: 100%;
   visibility: hidden;
+}
+
+.garage-controls, .winners-controls {
+  @include flex($gap: 5px);
+}
+
+.roads {
+  @include flex(column, 5px);
+  padding: 10px 0;
+}
+
+.road {
+  @include flex(column, 5px);
+  border-bottom: 2px black dashed;
+  .car-data {
+    @include flex($gap: 10px);
+  }
+  
+  .race-container {
+    @include flex(row, 5px, flex-end);
+    position: relative;
+    .flag {
+      position: absolute;
+      right: 70px;
+    }
+    .race-buttons {
+      @include flex(column, 5px);
+    }
+  }
+}
+
+.footer {
+  @include flex($justify: space-between);
+}
+
+.link {
+  text-decoration: none;
+  color: #FFFFFF;
+}
+
+.link:hover {
+  color: #BDAE82;
+  transition: 0.5s;
+}
+
+.table-head {
+  background-color: $color-red;
+}
+
+td {
+ padding: 0 10px;
+}
+
+.sort {
+  cursor: pointer; 
+  span {
+    padding: 0 5px;
+  }
 }
