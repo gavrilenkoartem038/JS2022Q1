@@ -2,7 +2,7 @@
 import API from '../../api/api';
 import Session from '../../const/session';
 import { Settings } from '../../const/settings';
-import { Callback, Car, Engine, EventCallback, RaceCar, Winner } from '../../types';
+import { Callback, Car, Engine, EventCallback, Order, RaceCar, Sort, Winner } from '../../types';
 import Initial from '../html/initial';
 import HTMLParts from '../html/parts';
 
@@ -20,7 +20,7 @@ class Controls {
     const totalPages = document.querySelector('.garage-tot') as HTMLElement;
     const prevPage = document.querySelector('.prev-garage') as HTMLButtonElement;
     const nextPage = document.querySelector('.next-garage') as HTMLButtonElement;
-    const response = await api.getAllCars(session.garagePageNumber);
+    const response = await api.getAllCars(session.garagePageNumber, settings.GARAGE_ITEMS_PER_PAGE);
     if (response) {
       const { garage: items, total } = response;
       session.currentGarage = items.map((car: Car): number => <number>car.id);
@@ -38,15 +38,21 @@ class Controls {
   };
 
   public loadWinners: Callback = async (): Promise<void> => {
-    const container = document.querySelector('.winners') as HTMLElement;
+    const container = document.querySelector('.table-body') as HTMLElement;
     const itemCounter = document.querySelector('.winners-count') as HTMLElement;
     const currentPage = document.querySelector('.winners-cur') as HTMLElement;
     const totalPages = document.querySelector('.winners-tot') as HTMLElement;
     const prevPage = document.querySelector('.prev-winners') as HTMLButtonElement;
     const nextPage = document.querySelector('.next-winners') as HTMLButtonElement;
-    const response = await api.getAllWinners(session.winnersPageNumber);
+    const response = await api.getAllWinners(
+      session.winnersPageNumber,
+      settings.WINNERS_ITEMS_PER_PAGE,
+      session.sort,
+      session.order
+    );
     if (response) {
       const { winners: items, total } = response;
+      console.log(items);
       session.winnersMaxPage = Math.ceil(total / settings.WINNERS_ITEMS_PER_PAGE) || settings.DEFAULT_INIT_VALUE;
       prevPage.disabled = session.winnersPageNumber < 2;
       nextPage.disabled = session.winnersPageNumber >= session.winnersMaxPage;
@@ -54,9 +60,14 @@ class Controls {
       totalPages.innerHTML = `${session.winnersMaxPage}`;
       itemCounter.innerHTML = `${total}`;
       container.innerHTML = '';
-      items.forEach((car: Winner): void => {
-        container.innerHTML += car.wins;
-      });
+      let number = 1;
+      items.forEach(
+        async (winner: Winner): Promise<void> => {
+          const car = await api.getCar(winner.id);
+          container.innerHTML += parts.winner(number, car.color, car.name, winner.wins, winner.time);
+          number++;
+        }
+      );
     }
   };
 
@@ -92,6 +103,7 @@ class Controls {
     const id: number = parseInt(<string>(e.target as HTMLElement).dataset.id, 10);
     await api.deleteCar(id);
     this.loadGarage();
+    this.loadWinners();
   };
 
   public selectCar: EventCallback = async (e: Event): Promise<void> => {
@@ -216,5 +228,28 @@ class Controls {
     (<HTMLElement>document.querySelector('.header')).style.visibility = 'visible';
     (<HTMLElement>document.querySelector('.main')).style.visibility = 'visible';
   };
+
+  public sortWinners: EventCallback = async (e: Event): Promise<void> => {
+    const button = e.target as HTMLButtonElement;
+    const { sort } = button.dataset;
+    session.sort = <Sort>sort;
+
+    if (session.order === Order.ASC) {
+      session.order = Order.DESC;
+      (<HTMLElement>button.lastChild).innerHTML = '↓';
+    } else {
+      session.order = Order.ASC;
+      (<HTMLElement>button.lastChild).innerHTML = '↑';
+    }
+
+    if (button.classList.contains('wins')) {
+      (document.querySelector('.time span') as HTMLElement).innerHTML = '';
+    } else {
+      (document.querySelector('.wins span') as HTMLElement).innerHTML = '';
+    }
+
+    this.loadWinners();
+  };
 }
+
 export default Controls;

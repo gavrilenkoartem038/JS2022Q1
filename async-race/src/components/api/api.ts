@@ -1,3 +1,4 @@
+/* eslint-disable @typescript-eslint/comma-dangle */
 import { getRandomColor, getRandomNum } from '../utils';
 import { Settings } from '../const/settings';
 import brandsCars from '../data/brands';
@@ -12,6 +13,8 @@ import {
   GarageData,
   Headers,
   Method,
+  Order,
+  Sort,
   Status,
   Winner,
   WinnersData,
@@ -146,8 +149,13 @@ class API {
     }
   };
 
-  public getAllWinners = async (page: number, limit = settings.GARAGE_ITEMS_PER_PAGE): Promise<WinnersData> => {
-    const res = await fetch(`${this.winners}?${temp.page(limit, page)}`);
+  public getAllWinners = async (
+    page: number,
+    limit = settings.WINNERS_ITEMS_PER_PAGE,
+    sort: Sort = settings.DEFAULT_SORT,
+    order: Order = settings.DEFAULT_ORDER
+  ): Promise<WinnersData> => {
+    const res = await fetch(`${this.winners}?${temp.page(limit, page)}&${temp.sort(sort)}&${temp.order(order)}`);
     return {
       winners: await res.json(),
       total: parseInt(<string>res.headers.get(Headers.TOTAL_COUNT), 10),

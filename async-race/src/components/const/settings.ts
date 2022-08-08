@@ -1,3 +1,5 @@
+import { Order, Sort } from '../types';
+
 export class Settings {
   public SERVER = 'http://127.0.0.1:3000/';
 
@@ -14,4 +16,8 @@ export class Settings {
   public ANIMATION_COEFFICIENT = 1000;
 
   public RACE_TIME_ORDER = 2;
+
+  public DEFAULT_SORT: Sort = Sort.ID;
+
+  public DEFAULT_ORDER: Order = Order.ASC;
 }

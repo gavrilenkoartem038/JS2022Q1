@@ -1,3 +1,4 @@
+import { Order, Sort } from '../types';
 import { Settings } from './settings';
 
 const settings = new Settings();
@@ -14,6 +15,10 @@ class Session {
   public currentGarage: number[] = [];
 
   public selectedCarId = 0;
+
+  public sort: Sort = settings.DEFAULT_SORT;
+
+  public order: Order = settings.DEFAULT_ORDER;
 }
 
 export default Session;

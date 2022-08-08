@@ -98,16 +98,29 @@ class HTMLParts {
     </div>
     <div class="winners">
       <table>
-        <tr>
-          <th>Number</th>
-          <th>Car</th>
-          <th>Name</th>
-          <th>Wins</th>
-          <th>Time(seconds)</th>
-        </tr>
+        <thead>
+          <tr>
+            <th>Number</th>
+            <th>Car</th>
+            <th>Name</th>
+            <th class="sort wins" data-sort="wins">Wins<span></span></th>
+            <th class="sort time" data-sort="time">Time(seconds)<span></span></th>
+          </tr>
+        </thead>
+        <tbody class="table-body"></tbody>
       </table>
     </div>
   </div>`;
+  };
+
+  public winner = (number: number, color: string, name: string, wins: number, time: number): string => {
+    return `<tr>
+    <th>${number}</th>
+    <th>${this.car(color)}</th>
+    <th>${name}</th>
+    <th>${wins}</th>
+    <th>${time}</th>
+  </tr>`;
   };
 }
 export default HTMLParts;

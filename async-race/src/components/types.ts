@@ -69,3 +69,14 @@ export interface WinnersData {
   winners: Winners;
   total: number;
 }
+
+export enum Sort {
+  ID = 'id',
+  WINS = 'wins',
+  TIME = 'time',
+}
+
+export enum Order {
+  ASC = 'ASC',
+  DESC = 'DESC',
+}
