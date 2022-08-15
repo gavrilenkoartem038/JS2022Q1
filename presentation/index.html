@@ -1,0 +1,439 @@
+<!doctype html>
+<html>
+	<head>
+		<meta charset="utf-8">
+		<meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no">
+
+		<title>Presentation</title>
+
+		<link rel="stylesheet" href="dist/reset.css">
+		<link rel="stylesheet" href="dist/reveal.css">
+		<link rel="stylesheet" href="dist/theme/black.css">
+
+		<!-- Theme used for syntax highlighted code -->
+		<link rel="stylesheet" href="plugin/highlight/monokai.css">
+	</head>
+	<body>
+		<div class="reveal">
+
+      <!-- Any section element inside of this container is displayed as a slide -->
+      <div class="slides">
+        <section>
+          <h2>SVG</h2>
+          <p>Scalable Vector Graphics (SVG) is an XML-based vector image format for defining two-dimensional graphics,
+            having support for interactivity and animation. The SVG specification is an open standard developed by the
+            World Wide Web Consortium (W3C) since 1999.</p>
+        </section>
+  
+        <section>
+          <h2>What is an SVG file?</h2>
+          <p class="fragment fade-down">SVG is a web-friendly vector file format. As opposed to
+            pixel-based raster files like JPEGs, vector files store images via mathematical formulas based on points and
+            lines on a grid. This means that vector files like SVG can be significantly resized without losing any of
+            their quality, which makes them ideal for logos and complex online graphics.</p>
+        </section>
+  
+        <section>
+          <h2>Advantages of usage SVG</h2>
+          <section>
+            <h3>1. Small size</h3>
+            <p class="fragment fade-right">SVG image elements take up much less space than their twins created in raster
+              format</p>
+          </section>
+          <section>
+            <h3>2. Flexibility</h3>
+            <p class="fragment fade-right">With CSS, you can quickly change the graphics settings on the site, such as
+              background color or the position of the logo on the page. To do this, you can edit the file in any text
+              editor</p>
+          </section>
+          <section>
+            <h3>3. Scalability</h3>
+            <p class="fragment fade-right">Scalability without changing the image quality. It is widely used for devices
+              with screens Retina and those close to them;</p>
+          </section>
+          <section>
+            <h3>4. Usage</h3>
+            <p class="fragment fade-right"> it’s possible to view the contents of the SVG file in any browser (IE, Chrome,
+              Opera, FireFox, Safari, etc.)</p>
+          </section>
+        </section>
+  
+        <section>
+          <h2>Disadvantages of usage SVG</h2>
+          <ul>
+            <li class="fragment fade-right">the file size is growing very fast, if the object consists of a large number
+              of small elements</li>
+            <li class="fragment fade-right">it’s impossible to read a part of the graphic object, only the entire object
+              and it slows you down</li>
+          </ul>
+        </section>
+  
+        <section>
+          <section>
+            <h2>SVG basic shapes examples</h2>
+          </section>
+          <section>
+            <h4>Circle</h4>
+            <pre data-id="code-animation"><code class="hljs" data-trim data-line-numbers>
+                <svg width="100" height="100">
+                  <circle cx="50" cy="50" r="40" stroke="green" stroke-width="4" fill="yellow"/>
+                </svg>
+              </code></pre>
+            <div
+              style="display: flex; align-items: center; justify-content: space-evenly; background-color: rgb(94, 94, 94); border-radius: 10px;"
+              class="fragment fade-down">
+              <div>Result:</div>
+              <svg width="100" height="100">
+                <circle cx="50" cy="50" r="40" stroke="green" stroke-width="4" fill="yellow" />
+              </svg>
+            </div>
+            <div class="fragment fade-down">
+              <h4>SVG Code explanation:</h4>
+              <ul style="font-size: 24px;">
+                <li class="fragment fade-down">An SVG image begins with an &lt;svg&gt; element</li>
+                <li class="fragment fade-down">The width and height attributes of the &lt;svg&gt; element define the width
+                  and height of the SVG image</li>
+                <li class="fragment fade-down">The &lt;circle&gt; element is used to draw a circle</li>
+                <li class="fragment fade-down">The cx and cy attributes define the x and y coordinates of the center of
+                  the circle</li>
+                <li class="fragment fade-down">The r attribute defines the radius of the circle</li>
+                <li class="fragment fade-down">The stroke and stroke-width attributes control how the outline of a shape
+                  appears</li>
+                <li class="fragment fade-down">The fill attribute refers to the color inside the circle</li>
+              </ul>
+            </div>
+          </section>
+          <section>
+            <h4>Poligon</h4>
+            <pre data-id="code-animation"><code class="hljs" data-trim data-line-numbers>
+                <svg height="200" width="200">
+                  <polygon points="50,10 100,160 10,190" style="fill:lime;stroke:purple;stroke-width:1" />
+                </svg>
+              </code></pre>
+            <div
+              style="display: flex; align-items: center; justify-content: space-evenly; background-color: rgb(94, 94, 94); border-radius: 10px;"
+              class="fragment fade-down">
+              <div>Result:</div>
+              <svg height="200" width="200">
+                <polygon points="50,10 100,160 10,190" style="fill:lime;stroke:purple;stroke-width:1" />
+              </svg>
+            </div>
+            <div class="fragment fade-down">
+              <h4>SVG Code explanation:</h4>
+              <ul style="font-size: 24px;">
+                <li class="fragment fade-down">The points attribute defines the x and y coordinates for each corner of the
+                  polygon</li>
+              </ul>
+            </div>
+          </section>
+          <section>
+            <h4>Line</h4>
+            <pre data-id="code-animation"><code class="hljs" data-trim data-line-numbers>
+                <svg height="200" width="200">
+                  <line x1="10" y1="10" x2="190" y2="190" style="stroke:rgb(255,0,0);stroke-width:2"/>
+                </svg>
+              </code></pre>
+            <div
+              style="display: flex; align-items: center; justify-content: space-evenly; background-color: rgb(94, 94, 94); border-radius: 10px;"
+              class="fragment fade-down">
+              <div>Result:</div>
+              <svg height="200" width="200">
+                <line x1="10" y1="10" x2="190" y2="190" style="stroke:rgb(255,0,0);stroke-width:2" />
+              </svg>
+            </div>
+            <div class="fragment fade-down">
+              <h4>SVG Code explanation:</h4>
+              <ul style="font-size: 24px;">
+                <li class="fragment fade-down">The x1 attribute defines the start of the line on the x-axis</li>
+                <li class="fragment fade-down">The y1 attribute defines the start of the line on the y-axis</li>
+                <li class="fragment fade-down">The x2 attribute defines the end of the line on the x-axis</li>
+                <li class="fragment fade-down">The y2 attribute defines the end of the line on the y-axis</li>
+              </ul>
+            </div>
+          </section>
+          <section>
+            <h4>You can see another basic shapes<a href="https://www.w3.org/TR/SVG2/shapes.html" target="_blank"> here</a>
+            </h4>
+          </section>
+        </section>
+  
+        <section>
+          <section>
+            <h2>SVG text examples</h2>
+            <p>The &lt;text&gt; element is used to define a text</p>
+          </section>
+          <section>
+            <h4>Simple SVG text example</h4>
+            <pre data-id="code-animation"><code class="hljs" data-trim data-line-numbers>
+                <svg height="30" width="200">
+                  <text x="0" y="15" fill="red">This is SVG</text>
+                </svg>
+              </code></pre>
+            <div class="fragment fade-down">
+              <div>Result:</div>
+              <svg height="30" width="200">
+                <text x="0" y="30" fill="red">This is SVG</text>
+              </svg>
+            </div>
+          </section>
+          <section>
+            <h4>Text on several lines (with the &lt;tspan&gt; element)</h4>
+            <pre data-id="code-animation"><code class="hljs" data-trim data-line-numbers>
+                <svg height="110" width="300">
+                  <text x="10" y="30" style="fill:red;">Several lines:
+                    <tspan x="10" y="65">First line.</tspan>
+                    <tspan x="10" y="100">Second line.</tspan>
+                  </text>
+                </svg>
+              </code></pre>
+            <div class="fragment fade-down">
+              <div>Result:</div>
+              <svg height="110" width="300">
+                <text x="10" y="30" style="fill:red;">Several lines:
+                  <tspan x="10" y="65">First line.</tspan>
+                  <tspan x="10" y="100">Second line.</tspan>
+                </text>
+              </svg>
+            </div>
+          </section>
+        </section>
+  
+        <section data-auto-animate>
+          <section>
+            <h2 data-id="code-title"> Grouping: the ‘g’ element</h2>
+            <pre data-id="code-animation"><code class="hljs" data-trim data-line-numbers="|3-6|7-10"><script type="text/template">
+              <svg width="5cm" height="5cm">
+  
+                <g id="group1" fill="red">
+                  <rect x="1cm" y="1cm" width="1cm" height="1cm"/>
+                  <rect x="3cm" y="1cm" width="1cm" height="1cm"/>
+                </g>
+  
+                <g id="group2" fill="blue">
+                  <rect x="1cm" y="3cm" width="1cm" height="1cm"/>
+                  <rect x="3cm" y="3cm" width="1cm" height="1cm"/>
+                </g>
+  
+                <rect x=".01cm" y=".01cm" width="4.98cm" height="4.98cm"
+                fill="none" stroke="blue" stroke-width=".02cm"/>
+              </svg>
+            </script></code></pre>
+          </section>
+          <section>
+            <div
+              style="display: flex; align-items: center; justify-content: space-evenly; background-color: rgb(94, 94, 94); border-radius: 10px;">
+              <div>Result:</div>
+              <svg width="5cm" height="5cm">
+  
+                <g id="group1" fill="red">
+                  <rect x="1cm" y="1cm" width="1cm" height="1cm" />
+                  <rect x="3cm" y="1cm" width="1cm" height="1cm" />
+                </g>
+  
+                <g id="group2" fill="blue">
+                  <rect x="1cm" y="3cm" width="1cm" height="1cm" />
+                  <rect x="3cm" y="3cm" width="1cm" height="1cm" />
+                </g>
+  
+                <rect x=".01cm" y=".01cm" width="4.98cm" height="4.98cm" fill="none" stroke="blue" stroke-width=".02cm" />
+              </svg>
+            </div>
+            <div>A ‘g’ element can contain other ‘g’ elements nested within it, to an arbitrary depth.</div>
+          </section>
+        </section>
+  
+        <section>
+          <section>
+            <h2>SVG Path</h2>
+            <p>The &lt;path&gt; element is used to define a path.</p>
+            <p>The following commands are available for path data:</p>
+            <ul style="font-size: 24px;">
+              <li>M = moveto</li>
+              <li>L = lineto</li>
+              <li>H = horizontal lineto</li>
+              <li>V = vertical lineto</li>
+              <li>C = curveto</li>
+              <li>S = smooth curveto</li>
+              <li>Q = quadratic Bézier curve</li>
+              <li>T = smooth quadratic Bézier curveto</li>
+              <li>A = elliptical Arc</li>
+              <li>Z = closepath</li>
+            </ul>
+          </section>
+          <section>
+            <h4>Example 1</h4>
+            <pre data-id="code-animation"><code class="hljs" data-trim data-line-numbers>
+              <svg height="200" width="200">
+                <path d="M100 10 L10 190 L190 190 Z" />
+              </svg>
+              </code></pre>
+            <div class="fragment fade-down"
+              style="display: flex; align-items: center; justify-content: space-evenly; background-color: rgb(94, 94, 94); border-radius: 10px;">
+              <div>Result:</div>
+              <svg height="200" width="200">
+                <path d="M100 10 L10 190 L190 190 Z" />
+              </svg>
+            </div>
+            <div class="fragment fade-down">
+              <p>SVG Path explanation:</p>
+              <ul style="font-size: 24px;">
+                <li class="fragment fade-down">The "moveto" command (M) must establish a new initial point and a new
+                  current point</li>
+                <li class="fragment fade-down">The "closepath" (Z) ends the current subpath by connecting it back to its
+                  initial point</li>
+                <li class="fragment fade-down">The "lineto" (L) draw a line from the current point to the given (x,y)
+                  coordinate which becomes the new current poin</li>
+                <li class="fragment fade-down">The are also "vertical lineto" (V) and "horizontal lineto" (H) that draws a
+                  vertical and horizontal line from the current point</li>
+              </ul>
+            </div>
+          </section>
+          <section>
+            <h4>Example 2</h4>
+            <pre data-id="code-animation"><code class="hljs" data-trim data-line-numbers>
+              <svg height="150" width="200">
+                <path d="M0,130 l 20,-10
+                  a10,10 -30 0,1 20,-10 l 20,-10
+                  a10,20 -30 0,1 20,-10 l 20,-10
+                  a10,30 -30 0,1 20,-10 l 20,-10
+                  a10,40 -30 0,1 20,-10 l 20,-10" fill="none" stroke="red" stroke-width="5" />
+              </svg>
+              </code></pre>
+            <div class="fragment fade-down"
+              style="display: flex; align-items: center; justify-content: space-evenly; background-color: rgb(94, 94, 94); border-radius: 10px;">
+              <div>Result:</div>
+              <svg height="150" width="200">
+                <path d="M0,130 l 20,-10
+                  a10,10 -30 0,1 20,-10 l 20,-10
+                  a10,20 -30 0,1 20,-10 l 20,-10
+                  a10,30 -30 0,1 20,-10 l 20,-10
+                  a10,40 -30 0,1 20,-10 l 20,-10" fill="none" stroke="red" stroke-width="5" />
+              </svg>
+            </div>
+            <div class="fragment fade-down" style="font-size: 30px;">
+              <p>Explanation: a (rx ry x-axis-rotation large-arc-flag sweep-flag x y):</p>
+              <ul style="font-size: 24px;">
+                <li class="fragment fade-down">Draws an elliptical arc from the current point to (x, y)</li>
+                <li class="fragment fade-down">The size and orientation of the ellipse are defined by two radii (rx, ry)
+                </li>
+                <li class="fragment fade-down">x-axis-rotation indicates how the ellipse as a whole is rotated, in degrees
+                </li>
+                <li class="fragment fade-down">large-arc-flag and sweep-flag contribute to the automatic calculations and
+                  help determine how the arc is drawn</li>
+              </ul>
+            </div>
+          </section>
+          <section>
+            <h4>Example 3</h4>
+            <pre data-id="code-animation"><code class="hljs" data-trim data-line-numbers>
+              <svg height="150" width="200">
+                <path d="M200,300 Q400,50 600,300 T1000,300"
+                  fill="none" stroke="red" stroke-width="5"  />
+                <g fill="black" >
+                  <circle cx="200" cy="300" r="10"/>
+                  <circle cx="600" cy="300" r="10"/>
+                  <circle cx="1000" cy="300" r="10"/>
+                </g>
+              </svg>
+              </code></pre>
+            <div class="fragment fade-down"
+              style="display: flex; align-items: center; justify-content: space-evenly; background-color: rgb(94, 94, 94); border-radius: 10px;">
+              <div>Result:</div>
+              <svg height="150" width="220">
+                <path d="M10,75 Q60,0 110,75 T210,75" fill="none" stroke="red" stroke-width="5" />
+                <g fill="black">
+                  <circle cx="10" cy="75" r="5" />
+                  <circle cx="110" cy="75" r="5" />
+                  <circle cx="210" cy="75" r="5" />
+                </g>
+              </svg>
+            </div>
+            <div class="fragment fade-down" style="font-size: 30px;">
+              <p>SVG path explanation:</p>
+              <ul style="font-size: 24px;">
+                <li class="fragment fade-down">Q draws a quadratic Bézier curve from the current point to (x,y) using
+                  (x1,y1) as the control point</li>
+                <li class="fragment fade-down"> T draws a quadratic Bézier curve from the current point to (x,y). The
+                  control point is assumed to be the reflection of the control point on the previous command relative to
+                  the current point
+                </li>
+            </div>
+          </section>
+        </section>
+  
+        <section>
+          <section>
+            <h2>SVG Gradients</h2>
+            <p>A gradient is a smooth transition from one color to another</p>
+            <p>A gradient element must be nested within a &lt;defs&gt; tag. The &lt;defs&gt; tag is short for definitions
+              and contains definition of special elements (such as gradients)</p>
+            <p>There are two main types of gradients in SVG</p>
+            <ul>
+              <li>Linear</li>
+              <li>Radial</li>
+            </ul>
+          </section>
+          <section>
+            <h4>Linear gradient example</h4>
+            <pre data-id="code-animation"><code class="hljs" data-trim data-line-numbers>
+              <svg height="120" width="400">
+                <defs>
+                  <linearGradient id="grad1" x1="0%" y1="0%" x2="100%" y2="0%">
+                    <stop offset="0%" style="stop-color:rgb(255,255,0);stop-opacity:1" />
+                    <stop offset="100%" style="stop-color:rgb(255,0,0);stop-opacity:1" />
+                  </linearGradient>
+                </defs>
+                <ellipse cx="200" cy="60" rx="85" ry="55" fill="url(#grad1)" />
+              </svg>
+              </code></pre>
+            <div class="fragment fade-down"
+              style="display: flex; align-items: center; justify-content: space-evenly; background-color: rgb(94, 94, 94); border-radius: 10px;">
+              <div>Result:</div>
+              <svg height="120" width="400">
+                <defs>
+                  <linearGradient id="grad1" x1="0%" y1="0%" x2="100%" y2="0%">
+                    <stop offset="0%" style="stop-color:rgb(255,255,0);stop-opacity:1" />
+                    <stop offset="100%" style="stop-color:rgb(255,0,0);stop-opacity:1" />
+                  </linearGradient>
+                </defs>
+                <ellipse cx="200" cy="60" rx="85" ry="55" fill="url(#grad1)" />
+              </svg>
+            </div>
+            <div class="fragment fade-down">
+              <p>SVG Path explanation:</p>
+              <ul style="font-size: 24px;">
+                <li class="fragment fade-down">The x1, x2, y1,y2 attributes of the &lt;linearGradient&gt; tag define the start
+                    and end position of the gradient</li>
+                <li class="fragment fade-down">The color range for a gradient can be composed of two or more colors. Each
+                  color is specified with a &lt;stop&gt; tag. The offset attribute is used to define where the gradient color
+                    begin and end</li>
+              </ul>
+            </div>
+          </section>
+        </section>
+  
+        <section>
+          <h1>THE END</h1>
+        </section>
+  
+      </div>
+  
+    </div>
+
+		<script src="dist/reveal.js"></script>
+		<script src="plugin/notes/notes.js"></script>
+		<script src="plugin/markdown/markdown.js"></script>
+		<script src="plugin/highlight/highlight.js"></script>
+		<script>
+			// More info about initialization & config:
+			// - https://revealjs.com/initialization/
+			// - https://revealjs.com/config/
+			Reveal.initialize({
+				hash: true,
+
+				// Learn about plugins: https://revealjs.com/plugins/
+				plugins: [ RevealMarkdown, RevealHighlight, RevealNotes ]
+			});
+		</script>
+	</body>
+</html>
